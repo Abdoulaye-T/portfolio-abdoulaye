@@ -6,6 +6,7 @@ import Skills from "./sections/Skills";
 import Portfolio from "./sections/Portfolio"; 
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
+import Education from "./sections/Education";
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
       <div className="pt-20">
         <Hero />
         <About />
-        <Experience />
         <Skills />
+        <Education />
         <Portfolio />
+        <Experience />
         <Contact />
         <Footer />
         {/* D'autres sections peuvent être ajoutées ici */}

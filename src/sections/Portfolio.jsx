@@ -5,7 +5,7 @@ const projects = [
   {
     title: 'E-Uamsat',
     category: 'Web',
-    image: '/images/e-uamsat.png',
+    image: '../assets/illustration 1.jpg',
     description: 'Plateforme de gestion académique pour établissements maliens.',
     stack: ['Laravel', 'MySQL', 'Bootstrap'],
     link: 'https://github.com/tonprofil/e-uamsat',
@@ -13,7 +13,7 @@ const projects = [
   {
     title: 'App React Native',
     category: 'Mobile',
-    image: '/images/app-mobile.png',
+    image: '../assets/Portfolio-1.jpg',
     description: 'Application mobile avec React Native et Node.js.',
     stack: ['React Native', 'Node.js', 'MySQL'],
     link: 'https://github.com/tonprofil/app-mobile',
@@ -21,7 +21,7 @@ const projects = [
   {
     title: 'Site vitrine WordPress',
     category: 'WordPress',
-    image: '/images/wordpress-site.png',
+    image: '../assets/Portfolio-2.png',
     description: 'Site institutionnel pour une entreprise pharmaceutique.',
     stack: ['WordPress', 'Elementor', 'PHP'],
     link: 'https://site-client.com',
@@ -72,7 +72,7 @@ export default function Portfolio() {
           <AnimatePresence>
             {filteredProjects.map((project, index) => (
               <motion.div
-                key={project.title}
+                key={index}
                 layout
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -6,10 +6,11 @@ import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
 const links = [
   { id: 1, name: "Accueil", to: "hero" },
   { id: 2, name: "À propos", to: "about" },
-  { id: 3, name: "Expérience", to: "experience" },
-  { id: 4, name: "Compétences", to: "skills" },
-  { id: 5, name: "Portfolio", to: "portfolio" },
-  { id: 6, name: "Contact", to: "contact" },
+  { id: 3, name: "Compétences", to: "skills" },
+  { id: 4, name: "Formation", to: "education" },
+  { id: 5, name: "Portfolio", to: "portfolio" },  
+  { id: 6, name: "Expérience", to: "experience" },
+  { id: 7, name: "Contact", to: "contact" },
 ];
 
 export default function Navbar() {

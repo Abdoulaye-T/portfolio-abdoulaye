@@ -30,6 +30,12 @@ const allSkills = [
     category: 'Web',
   },
   {
+    name: 'Node.js',
+    icon: <FaNodeJs className="text-green-500" size={40} />,
+    description: 'Environnement d\'exécution JavaScript pour construire des API et apps robustes.',
+    category: 'Web',
+  },
+  {
     name: 'Tailwind CSS',
     icon: <SiTailwindcss className="text-teal-400" size={40} />,
     description: 'CSS utilitaire pour un design rapide, responsive et élégant.',

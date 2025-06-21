@@ -59,14 +59,14 @@ export default function About() {
         ))}
         </div>
 
-        {/* Objectif professionnel */}
+        {/* Objectif professionnel
         <div className="mt-8 p-4 rounded-xl bg-gray-100 border-l-4 border-purple-500 shadow-sm">
         <h3 className="text-lg font-semibold mb-1">🎯 Objectif professionnel</h3>
         <p className="text-sm text-gray-700 leading-relaxed">
             Intégrer une équipe ambitieuse ou accompagner des projets innovants en tant que développeur fullstack / cloud. 
             Apporter des solutions techniques solides tout en continuant à me former sur les technologies émergentes.
         </p>
-        </div>
+        </div> */}
 
     </section>
   );
