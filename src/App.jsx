@@ -17,8 +17,8 @@ function App() {
         <About />
         <Skills />
         <Education />
-        <Portfolio />
         <Experience />
+        <Portfolio />
         <Contact />
         <Footer />
         {/* D'autres sections peuvent être ajoutées ici */}

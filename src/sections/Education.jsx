@@ -4,28 +4,37 @@ import { FaGraduationCap, FaCloud, FaBook } from "react-icons/fa";
 const educations = [
   {
     title: "Formation AWS re/Start – Cloud Computing",
-    school: "Amazon Web Services & Simplon Mali",
-    date: "Mai 2024 – Août 2024",
+    school: "Amazon Web Services & Orange Digital Center Mali",
+    date: "Août 2024 – Novembre 2024",
     description:
       "Apprentissage du cloud AWS : EC2, S3, Lambda, IAM, scripts Bash, sécurité, VPC. Projets pratiques sur l'infrastructure cloud.",
     icon: <FaCloud />,
     tags: ["EC2", "S3", "IAM", "Lambda", "Bash", "CloudFormation"],
   },
   {
-    title: "Technicien Développeur Full-Stack",
+    title: "BAC+3 Génie Logiciel et Développement Web",
     school: "Technolab-ISTA",
-    date: "2022 – 2024",
+    date: "Octobre 2021 – Août 2024",
     description:
-      "Développement web & mobile : Laravel, React Native, MySQL, Bootstrap. Projet de gestion académique (E-Uamsat).",
+      "Développement web & mobile : Laravel, Rea)à==ct Native, MySQL, Bootstrap. Projet de gestion académique (E-Uamsat).",
     icon: <FaGraduationCap />,
     tags: ["Laravel", "React Native", "MySQL", "Bootstrap"],
   },
   {
-    title: "Apprentissage Autodidacte",
-    school: "YouTube, Udemy, OpenClassrooms",
-    date: "Depuis 2021",
+    title: "Meta Certified Frontend Developer",
+    school: "Orange Digital Center Mali, Coursera",
+    date: "Depuis Mai 2025",
     description:
-      "Renforcement en JavaScript, React, DevOps, UI/UX, WordPress, Docker. Veille technologique constante.",
+      "Renforcement en JavaScript et JavaScript avancées, React et React avancées, principes UI/UX, Figma, Veille technologique constante.",
+    icon: <FaBook />,
+    tags: ["React", "Docker", "Git", "WordPress", "DevOps"],
+  },
+  {
+    title: "CISCO Certification IT Essentials",
+    school: "Netacad",
+    date: "Août 2023",
+    description:
+      "Renforcement en JavaScript et JavaScript avancées, React et React avancées, principes UI/UX, Figma, Veille technologique constante.",
     icon: <FaBook />,
     tags: ["React", "Docker", "Git", "WordPress", "DevOps"],
   },
@@ -39,7 +48,7 @@ export default function Education() {
     >
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold mb-10 border-b-4 border-purple-600 inline-block">
-          Formations & Éducation
+          Formations & Éducations
         </h2>
 
         <div className="relative border-l-4 border-purple-600 pl-6 space-y-14">

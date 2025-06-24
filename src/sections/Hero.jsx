@@ -25,8 +25,8 @@ export default function Hero() {
             words={[
               "Développeur Web",
               "Développeur Mobile",
+              "Développeur Wordpress",
               "Intégrateur ERP Odoo",
-              "Créateur de solutions intelligentes",
             ]}
             loop={0} // 0 = infini
             cursor

@@ -51,7 +51,7 @@ export default function Experience() {
     >
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold mb-10 border-b-4 border-purple-600 inline-block">
-          Mon parcours
+          Mes expériences
         </h2>
 
         {/* Desktop timeline avec ligne centrale */}
