@@ -1,8 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero"; // On testera avec juste le Hero pour l’instant
 import About from "./sections/About";
-import Experience from "./sections/Experience";
-import Skills from "./sections/Skills";
+import Services from "./sections/Services";
 import Portfolio from "./sections/Portfolio"; 
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
@@ -15,9 +14,9 @@ function App() {
       <div className="pt-20">
         <Hero />
         <About />
-        <Skills />
+        <Services />
         <Education />
-        <Experience />
+        {/* <Experience /> */}
         <Portfolio />
         <Contact />
         <Footer />

@@ -6,9 +6,8 @@ import { FaBars, FaTimes, FaMoon, FaSun, FaDownload } from "react-icons/fa";
 const links = [
   { id: 1, name: "Accueil", to: "hero" },
   { id: 2, name: "À propos", to: "about" },
-  { id: 3, name: "Service", to: "skills" },
-  { id: 4, name: "Formation", to: "education" },
-  { id: 5, name: "Expérience", to: "experience" },
+  { id: 3, name: "Service", to: "services" },
+  { id: 4, name: "Mon parcours", to: "education" },
   { id: 6, name: "Portfolio", to: "portfolio" },  
   { id: 7, name: "Contact", to: "contact" },
 ];
