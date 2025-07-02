@@ -218,16 +218,17 @@ export default function About() {
         >
           <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-8 rounded-3xl shadow-2xl">
             <h3 className="text-2xl font-bold text-white mb-4">
-              Prêt à donner vie à votre projet ?
+              Un projet en tête ?
             </h3>
             <p className="text-purple-100 mb-6 max-w-2xl mx-auto">
-              Discutons de votre vision et créons ensemble quelque chose d'extraordinaire
+              Discutons de vos besoins et créons ensemble une solution sur mesure
             </p>
             <a
               href="#contact"
               className="inline-flex items-center gap-3 px-8 py-4 bg-white text-purple-600 rounded-full font-bold hover:bg-gray-50 hover:scale-105 transition-all duration-300 shadow-lg group"
+              aria-label="Aller à la section contact"
             >
-              Me contacter 
+              Démarrer le projet
               <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
