@@ -4,7 +4,7 @@ import useTheme from '../hooks/useTheme';
 import { FaBars, FaTimes, FaMoon, FaSun, FaDownload } from "react-icons/fa";
 
 const links = [
-  { id: 1, name: "Accueil", to: "hero" },
+  { id: 1, name: "Accueil", to: "home" },
   { id: 2, name: "À propos", to: "about" },
   { id: 3, name: "Services", to: "services" },
   { id: 4, name: "Parcours", to: "education" },

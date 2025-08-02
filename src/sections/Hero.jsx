@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, ArrowDown, Code, Globe, Smartphone, Settings } from "lucide-react";
 import { useState, useEffect } from "react";
+import Photo from "../assets/hero.jpg"; // Import your professional photo
 
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0);
@@ -38,7 +39,6 @@ export default function Hero() {
     }
   };
 
-  // Animation plus subtile pour la card
   const subtleFloatVariants = {
     initial: { y: 0 },
     animate: {
@@ -52,15 +52,15 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
-      {/* Background decorative elements - légèrement réduits */}
+    <section id="home" className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
+      {/* Background decorative elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/8 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/8 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/4 to-purple-500/4 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Grid pattern overlay - plus subtil */}
+      {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDYwIDAgTCAwIDAgMCA2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDIpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-15"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-screen flex items-center">
@@ -138,8 +138,8 @@ export default function Hero() {
               </motion.a>
             </motion.div>
 
-            {/* Ajout de metrics professionnelles */}
-            <motion.div variants={itemVariants} className="flex items-center gap-8 pt-4">
+            {/* Metrics professionnelles */}
+            <motion.div variants={itemVariants} className="flex items-center gap-8 pt-4 pb-8">
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">3+</div>
                 <div className="text-sm text-gray-400">Années d'expérience</div>
@@ -154,14 +154,14 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="pt-4">
+            {/* <motion.div variants={itemVariants} className="pt-4">
               <p className="text-sm text-gray-400 italic">
                 "Excellence technique, solutions sur mesure."
               </p>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
-          {/* Visual Element - Animations réduites */}
+          {/* Photo professionnelle */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -174,94 +174,35 @@ export default function Hero() {
               animate="animate"
               className="relative"
             >
-              {/* Main card */}
               <motion.div
                 variants={itemVariants}
-                className="relative z-10 w-80 h-96 bg-gradient-to-br from-white/12 to-white/6 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl overflow-hidden"
+                className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl"
+                whileHover={{ scale: 1.02, rotate: 1 }}
+                transition={{ duration: 0.3 }}
               >
-                {/* Header */}
-                <div className="p-6 border-b border-white/10">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center font-bold text-lg text-white">
-                      A
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-white">Abdoulaye Traoré</h3>
-                      <p className="text-sm text-gray-300">Développeur Full Stack</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-white">3+</div>
-                      <div className="text-sm text-gray-300">Années</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-white">25+</div>
-                      <div className="text-sm text-gray-300">Projets</div>
-                    </div>
-                  </div>
-                  
-                  {/* Tech stack preview */}
-                  <div className="space-y-3">
-                    <p className="text-sm font-medium text-gray-300">Stack technique</p>
-                    <div className="flex flex-wrap gap-2">
-                      {['React', 'Node.js', 'Python', 'WordPress', 'Odoo'].map((tech, index) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-white/10 rounded-full text-xs text-white backdrop-blur-sm border border-white/10"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Status professionnel */}
-                  <div className="space-y-2 pt-2">
-                    <div className="flex items-center gap-2 text-sm text-gray-300">
-                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      Disponible immédiatement
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-300">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                      Bamako, Mali (Remote OK)
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src={Photo} // Remplace par le chemin de ta photo
+                  alt="Abdoulaye Traoré"
+                  className="w-full h-full object-cover"
+                />
+                {/* Overlay subtil pour un effet premium */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-blue-900/20"></div>
               </motion.div>
 
-              {/* Éléments flottants - Animation uniquement au hover */}
+              {/* Éléments flottants simplifiés */}
               <motion.div
-                whileHover={{
-                  y: -5,
-                  scale: 1.05
-                }}
+                whileHover={{ y: -3, scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg cursor-pointer"
+                className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg cursor-pointer"
               >
-                <Code className="w-8 h-8 text-white" />
-              </motion.div>
-
-              <motion.div
-                whileHover={{
-                  y: -3,
-                  scale: 1.05
-                }}
-                transition={{ duration: 0.3 }}
-                className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg cursor-pointer"
-              >
-                <Globe className="w-6 h-6 text-white" />
+                <Code className="w-6 h-6 text-white" />
               </motion.div>
             </motion.div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator - plus discret */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
