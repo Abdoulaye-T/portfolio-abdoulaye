@@ -103,7 +103,7 @@ const services = [
     ],
     technologies: ["ERP", "Odoo"],
     stats: {
-      projects: "1+",
+      projects: "3+",
       satisfaction: "95% (2 clients)",
       avgTime: "3 sem"
     },
@@ -124,7 +124,7 @@ const services = [
       "Paiements sécurisés Stripe",
       "Analytics & heatmaps inclus"
     ],
-    technologies: ["WordPress", "Wix", "WooCommerce", "Stripe", "Paypal"],
+    technologies: ["WordPress", "Wix", "WooCommerce", "Stripe", "Paypal", "Mobile Money"],
     stats: {
       projects: "3+",
       satisfaction: "99% (3 clients)",
@@ -160,7 +160,7 @@ const services = [
 
 // Statistiques globales
 const globalStats = [
-  { icon: <Trophy size={20} />, value: "3+", label: "Projets livrés" },
+  { icon: <Trophy size={20} />, value: "5+", label: "Projets livrés" },
   { icon: <Users size={20} />, value: "98%", label: "Clients satisfaits" },
   { icon: <Zap size={20} />, value: "5★", label: "Note moyenne" },
   { icon: <Clock size={20} />, value: "48h", label: "Première réponse" }
@@ -416,9 +416,9 @@ export default function Services() {
                   <span>📞 Appel immédiat</span>
                 </a>
               </div>
-              <div className="mt-6 text-white/80 text-sm">
+              {/* <div className="mt-6 text-white/80 text-sm">
                 ⏰ Réservez avant le 15 août
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

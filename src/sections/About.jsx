@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FaArrowRight, FaCode, FaLightbulb, FaRocket, FaHeart, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiReact, SiLaravel, SiTailwindcss, SiAmazon, SiNodedotjs, SiMysql, SiGit, SiAngular, SiFirebase, SiFigma } from "react-icons/si";
-import Illustration from "../assets/illustration 1.jpg"; // À remplacer par ta photo plus tard
+import Illustration from "../assets/a2.jpg"; // À remplacer par ta photo plus tard
 
 export default function About() {
   const techStack = [
@@ -97,7 +97,7 @@ export default function About() {
             {/* Social Icons */}
             <div className="flex justify-center gap-4 mt-4">
               <motion.a
-                href="https://github.com/ton-profil-github" // Remplace par ton lien GitHub
+                href="https://github.com/Abdoulaye-T" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -106,7 +106,7 @@ export default function About() {
                 <FaGithub className="w-6 h-6" />
               </motion.a>
               <motion.a
-                href="https://linkedin.com/in/ton-profil-linkedin" // Remplace par ton lien LinkedIn
+                href="https://www.linkedin.com/in/abdoulaye-traore-73928924a/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -124,13 +124,13 @@ export default function About() {
               <div className="pl-8">
                 <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                   <span className="text-3xl">👨‍💻</span>
-                  Développeur passionné
+                  Développeur full-stack passionné
                 </h3>
                 <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Je transforme vos <span className="font-semibold text-blue-600 dark:text-blue-400">idées en solutions digitales</span> performantes et intuitives, avec plus de <span className="font-semibold">3 ans d'expérience</span> en développement web et mobile.
                 </p>
                 <p className="leading-relaxed text-gray-600 dark:text-gray-300">
-                  Spécialisé en <span className="font-semibold text-blue-600 dark:text-blue-400">cloud computing</span> et <span className="font-semibold text-blue-600 dark:text-blue-400">ERP Odoo</span>, je crée des applications modernes centrées sur l'utilisateur, alliant esthétique et performance.
+                  Spécialisé dans <span className="font-semibold text-blue-600 dark:text-blue-400">l'ERP Odoo</span>, je m'intéresse particulièrement au <span className="font-semibold text-blue-600 dark:text-blue-400">cloud computing</span>, à <span className="font-semibold text-blue-600 dark:text-blue-400">l’automatisation DevOps</span> et à l’<span className="font-semibold text-blue-600 dark:text-blue-400">impact de la technologie</span> sur la société. Ainsi, je crée des applications modernes centrées sur l'utilisateur, alliant esthétique et performance.
                 </p>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function About() {
 
             <div className="space-y-3">
               <p className="leading-relaxed text-gray-600 dark:text-gray-300">
-                Mon ambition est de coder avec précision et de contribuer à des projets qui font la différence.
+                Mon objectif : résoudre des problèmes réels avec du code clair et une vision centrée utilisateur.
               </p>
               <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold">
                 <FaRocket />

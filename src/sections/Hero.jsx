@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { Download, ArrowDown, Code, Globe, Smartphone, Settings } from "lucide-react";
 import { useState, useEffect } from "react";
-import Photo from "../assets/hero.jpg"; // Import your professional photo
+import Photo from "../assets/a1.jpg"; // Import your professional photo
 
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0);
   const roles = [
     { text: "Développeur Full Stack", icon: Code },
-    { text: "Développeur Mobile", icon: Smartphone },
-    { text: "Développeur WordPress", icon: Globe },
-    { text: "Intégrateur ERP Odoo", icon: Settings }
+    { text: " Mobile", icon: Smartphone },
+    { text: " WordPress", icon: Globe },
+    { text: " ERP Odoo", icon: Settings }
   ];
 
   useEffect(() => {

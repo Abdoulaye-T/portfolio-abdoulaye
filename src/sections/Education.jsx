@@ -21,7 +21,7 @@ const educations = [
     date: "Août 2024 – Novembre 2024",
     description: "Formation intensive sur l'écosystème AWS avec focus sur l'architecture cloud moderne, la sécurité, et l'automatisation. Déployé une application serverless pour un client fictif avec Lambda et S3. Certification AWS obtenue avec mention.",
     icon: <Cloud className="w-5 h-5" />,
-    tags: ["AWS", "EC2", "S3", "IAM", "Lambda", "CloudFormation"],
+    tags: ["AWS", "EC2", "S3", "VPC", "IAM", "Lambda", "CloudFormation", "IaaS", "SaaS", "PaaS"],
     level: "Certifié AWS",
     color: "from-blue-500 to-purple-500"
   },
@@ -41,7 +41,7 @@ const educations = [
     date: "Mai 2024 – En cours",
     description: "Certification officielle Meta couvrant React avancé, JavaScript ES6+, principes UX/UI, et bonnes pratiques. Développé une interface React interactive avec tests unitaires Jest pour un projet client.",
     icon: <Code className="w-5 h-5" />,
-    tags: ["React", "JavaScript", "UI/UX", "Testing", "Git"],
+    tags: ["React", "HTML", "CSS", "JavaScript", "UI/UX", "Testing", "Jest", "Git & GitHub"],
     level: "Certifié Meta",
     color: "from-blue-500 to-purple-500"
   },
@@ -59,6 +59,21 @@ const educations = [
 
 const experiences = [
   {
+    title: "Stagiaire Développeur Web & Mobile",
+    company: "Miths - Agence digitale Franco-Malienne",
+    date: "Mai 2025 – en cours",
+    description: "Développement de E-Uamsat, plateforme SaaS de gestion académique. Conception d'une architecture scalable, développement d'API RESTful sécurisées, et création d'interfaces utilisateur modernes.",
+    icon: <Code className="w-5 h-5" />,
+    tags: ["Laravel", "MySQL", "API REST", "Bootstrap", "Git"],
+    achievements: [
+      "500+ utilisateurs actifs quotidiens",
+      "Architecture scalable implémentée", 
+      "Réduction de 80% du temps de gestion",
+      "Interface multilingue (FR/EN)"
+    ],
+    color: "from-blue-500 to-purple-500"
+  },
+  {
     title: "Développeur Full-Stack",
     company: "Technolab-ISTA",
     date: "Février 2024 – Juin 2024",
@@ -74,12 +89,12 @@ const experiences = [
     color: "from-blue-500 to-purple-500"
   },
   {
-    title: "Stagiaire Cloud Developer",
+    title: "Apprenant Cloud",
     company: "Programme AWS re/Start",
     date: "Mai 2024 – Août 2024",
     description: "Développement de solutions cloud sur AWS. Automatisation d'infrastructures avec CloudFormation, mise en place de pipelines CI/CD, et optimisation des coûts cloud.",
     icon: <Cloud className="w-5 h-5" />,
-    tags: ["AWS", "CloudFormation", "EC2", "S3", "Lambda", "DevOps"],
+    tags: ["AWS", "CloudFormation", "EC2", "S3", "Lambda", "DevOps", "Python", "Scripting"],
     achievements: [
       "5 architectures cloud déployées",
       "Automatisation complète des déploiements",
@@ -87,21 +102,6 @@ const experiences = [
       "Monitoring et alertes configurés"
     ],
     color: "from-yellow-400 to-orange-500" // Dégradé distinct pour se démarquer
-  },
-  {
-    title: "Développeur Freelance",
-    company: "Indépendant",
-    date: "2023 – Présent",
-    description: "Développement d'applications web et mobile sur mesure pour PME locales. Spécialisation WordPress, React Native, et administration serveurs Linux. Conseil en transformation digitale.",
-    icon: <Rocket className="w-5 h-5" />,
-    tags: ["React Native", "WordPress", "Linux", "Nginx", "Consulting"],
-    achievements: [
-      "15+ projets web/mobile livrés",
-      "100% de satisfaction client",
-      "Respect des délais et budgets",
-      "Support technique 24/7"
-    ],
-    color: "from-blue-500 to-purple-500"
   },
 ];
 
@@ -189,12 +189,12 @@ export default function TimelinePortfolio() {
                     {tab === "education" ? (
                       <>
                         <GraduationCap className="w-5 h-5" />
-                        Formation
+                        Formation & Certifictions
                       </>
                     ) : (
                       <>
                         <Briefcase className="w-5 h-5" />
-                        Expérience
+                        Expérience Professionnelle
                       </>
                     )}
                   </span>
