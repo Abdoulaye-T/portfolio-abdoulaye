@@ -26,13 +26,13 @@ const services = [
     gradient: "from-blue-500 to-purple-500",
     description: "Transformez votre vision en application web haute performance qui convertit vos visiteurs en clients.",
     features: [
-      "Applications React/Laravel sur mesure",
+      "Applications web sur mesure",
       "API REST & GraphQL optimisées",
       "Base de données haute performance",
-      "Design responsive premium",
+      "Design responsive",
       "SEO & Core Web Vitals optimisés"
     ],
-    technologies: ["React", "Angular", "PHP & Laravel", "Express & Node.js", "MySQL", "Tailwind CSS"],
+    technologies: ["HTML/CSS/JS", "React", "Angular", "PHP", "Laravel", "Express & Node.js", "Tailwind CSS"],
     stats: {
       projects: "5+",
       satisfaction: "100% (5 clients)",
@@ -49,7 +49,7 @@ const services = [
     gradient: "from-yellow-400 to-orange-500",
     description: "Créez une app mobile qui rivalise avec les plus grandes, disponible sur iOS et Android simultanément.",
     features: [
-      "React Native / Flutter premium",
+      "React Native / Flutter",
       "Interface native fluide",
       "Intégrations API avancées",
       "Push notifications intelligentes",
@@ -78,7 +78,7 @@ const services = [
       "Sauvegarde multi-zones",
       "Optimisation coûts -40%"
     ],
-    technologies: ["AWS", "Docker", "SaaS", "PaaS", "IaaS"],
+    technologies: ["AWS", "Azure", "Docker", "SaaS", "PaaS", "IaaS"],
     stats: {
       projects: "En cours",
       satisfaction: null,
@@ -121,10 +121,10 @@ const services = [
       "Design premium sur mesure",
       "Optimisation conversion +150%",
       "SEO première page Google",
-      "Paiements sécurisés Stripe",
+      "Paiements sécurisés Stripe, PayPal, Mobile Money",
       "Analytics & heatmaps inclus"
     ],
-    technologies: ["WordPress", "Wix", "WooCommerce", "Stripe", "Paypal", "Mobile Money"],
+    technologies: ["WordPress", "WooCommerce", "Paypal", "Mobile Money"],
     stats: {
       projects: "3+",
       satisfaction: "99% (3 clients)",
@@ -143,7 +143,7 @@ const services = [
     features: [
       "Audit technique 360° complet",
       "Plan d'action détaillé",
-      "Roadmap technologique 2024",
+      "Roadmap technologique par étapes",
       "Optimisation performance +200%",
       "ROI calculé et garanti"
     ],
@@ -225,7 +225,7 @@ export default function Services() {
           </h2>
           
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Des solutions sur mesure qui ont déjà aidé <strong>3+ entreprises</strong> à digitaliser leur activité et multiplier leur chiffre d'affaires
+            Des solutions sur mesure qui ont déjà aidé <strong>3+ entreprises et particulier</strong> à digitaliser leur activité et multiplier leur chiffre d'affaires
           </p>
           
           <div className="w-32 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-8 rounded-full"></div>
@@ -270,16 +270,16 @@ export default function Services() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Badge Populaire */}
-              {service.popular && (
+              {/* {service.popular && (
                 <div className="absolute -top-3 -right-3 z-20">
                   <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">
                     🔥 POPULAIRE
                   </div>
                 </div>
-              )}
+              )} */}
 
               {/* Badge du service */}
-              <div className="absolute -top-2 -left-2 z-10">
+              {/* <div className="absolute -top-2 -left-2 z-10">
                 <div
                   className={`bg-gradient-to-r ${
                     service.popular ? 'from-yellow-400 to-orange-500' : 'from-blue-500 to-purple-500'
@@ -287,7 +287,7 @@ export default function Services() {
                 >
                   {service.badge}
                 </div>
-              </div>
+              </div> */}
 
               <div className="h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200/20 dark:border-blue-700/20 relative overflow-hidden group-hover:-translate-y-3 group-hover:scale-[1.02]">
                 {/* En-tête du service */}
@@ -306,7 +306,7 @@ export default function Services() {
                 </div>
 
                 {/* Statistiques */}
-                <div className="grid grid-cols-3 gap-3 mb-6">
+                {/* <div className="grid grid-cols-3 gap-3 mb-6">
                   {service.stats.projects && (
                     <div className="text-center">
                       <div className="text-lg font-bold text-gray-800 dark:text-gray-100">{service.stats.projects}</div>
@@ -323,7 +323,7 @@ export default function Services() {
                     <div className="text-lg font-bold text-blue-600 dark:text-blue-400">{service.stats.avgTime}</div>
                     <div className="text-xs text-gray-600 dark:text-gray-300">Livraison</div>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Description */}
                 <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed font-medium">
@@ -397,7 +397,7 @@ export default function Services() {
                 Prêt à transformer votre business ?
               </h3>
               <p className="text-blue-100 mb-8 max-w-3xl mx-auto text-lg leading-relaxed">
-                Rejoignez les <strong>3+ entreprises</strong> qui ont déjà fait confiance à mon expertise. 
+                Rejoignez les <strong>3+ entreprises et particuliers</strong> qui ont déjà fait confiance à mon expertise. 
                 <span className="block mt-2">💡 Consultation stratégique de 30min</span>
               </p>
               

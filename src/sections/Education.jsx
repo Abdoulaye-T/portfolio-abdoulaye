@@ -31,7 +31,7 @@ const educations = [
     date: "Octobre 2021 – Août 2024",
     description: "Formation complète en développement full-stack avec spécialisation mobile. Projet de fin d'études : E-Uamsat, plateforme de gestion académique déployée en production avec 500+ utilisateurs actifs.",
     icon: <GraduationCap className="w-5 h-5" />,
-    tags: ["Laravel", "React Native", "MySQL", "Bootstrap", "Git"],
+    tags: ["HTML/CSS/JavaScript", "Bootstrap", "Java", "Java EE", "Node.js", "C++", "PHP", "Laravel", "React Native", "SQL", "MySQL", "MongoDB", "Oracle", "Git & GitHub", "UML", "Merise"],
     level: "Diplômé",
     color: "from-blue-500 to-purple-500"
   },
@@ -41,7 +41,7 @@ const educations = [
     date: "Mai 2024 – En cours",
     description: "Certification officielle Meta couvrant React avancé, JavaScript ES6+, principes UX/UI, et bonnes pratiques. Développé une interface React interactive avec tests unitaires Jest pour un projet client.",
     icon: <Code className="w-5 h-5" />,
-    tags: ["React", "HTML", "CSS", "JavaScript", "UI/UX", "Testing", "Jest", "Git & GitHub"],
+    tags: ["React", "HTML", "CSS", "JavaScript", "UI/UX", "Testing", "Jest", "Git & GitHub", "Figma"],
     level: "Certifié Meta",
     color: "from-blue-500 to-purple-500"
   },
@@ -189,12 +189,12 @@ export default function TimelinePortfolio() {
                     {tab === "education" ? (
                       <>
                         <GraduationCap className="w-5 h-5" />
-                        Formation & Certifictions
+                        Formations & Certifications
                       </>
                     ) : (
                       <>
                         <Briefcase className="w-5 h-5" />
-                        Expérience Professionnelle
+                        Expériences Professionnelles
                       </>
                     )}
                   </span>

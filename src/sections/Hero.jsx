@@ -145,13 +145,13 @@ export default function Hero() {
                 <div className="text-sm text-gray-400">Années d'expérience</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">25+</div>
+                <div className="text-2xl font-bold text-white">10+</div>
                 <div className="text-sm text-gray-400">Projets réalisés</div>
               </div>
-              <div className="text-center">
+              {/* <div className="text-center">
                 <div className="text-2xl font-bold text-white">100%</div>
                 <div className="text-sm text-gray-400">Clients satisfaits</div>
-              </div>
+              </div> */}
             </motion.div>
 
             {/* <motion.div variants={itemVariants} className="pt-4">

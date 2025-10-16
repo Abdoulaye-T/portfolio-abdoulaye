@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { FaArrowRight, FaCode, FaLightbulb, FaRocket, FaHeart, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiReact, SiLaravel, SiTailwindcss, SiAmazon, SiNodedotjs, SiMysql, SiGit, SiAngular, SiFirebase, SiFigma } from "react-icons/si";
-import Illustration from "../assets/a2.jpg"; // À remplacer par ta photo plus tard
+import Illustration from "../assets/a2.jpg"; // Image principale (toi professionnel)
+import WorkImage from "../assets/a1.jpg"; // Image secondaire (setup de travail)
 
 export default function About() {
   const techStack = [
@@ -14,7 +15,7 @@ export default function About() {
     { name: "MySQL", icon: SiMysql, color: "#00758F" },
     { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
     { name: "Git", icon: SiGit, color: "#F05032" },
-    { name: "Odoo", icon: SiGit, color: "#714B67" }, // Placeholder, utiliser un SVG pour Odoo si possible
+    { name: "Odoo", icon: SiGit, color: "#714B67" },
     { name: "Figma", icon: SiFigma, color: "#F24E1E" }
   ];
 
@@ -45,8 +46,8 @@ export default function About() {
     <section id="about" className="py-20 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/40 to-purple-400/40 dark:from-blue-400/20 dark:to-purple-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-blue-400/40 to-cyan-400/40 dark:from-blue-400/20 dark:to-cyan-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/30 to-purple-400/30 dark:from-blue-400/20 dark:to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/30 to-purple-400/30 dark:from-blue-400/20 dark:to-purple-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -72,32 +73,46 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="grid lg:grid-cols-2 gap-12 items-center mb-16"
         >
-          {/* Visual Content (Image à gauche) */}
+          {/* Visual Content (2 images superposées, bien visibles) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative"
+            className="relative mx-auto lg:mx-0"
           >
-            <div className="relative group w-80 mx-auto lg:mx-0">
-              {/* Decorative background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400/40 to-purple-400/40 dark:from-blue-400/20 dark:to-purple-400/20 rounded-3xl transform rotate-3 group-hover:rotate-1 transition-transform duration-500"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-400/40 to-cyan-400/40 dark:from-purple-400/20 dark:to-cyan-400/20 rounded-3xl transform -rotate-3 group-hover:-rotate-1 transition-transform duration-500"></div>
-              
-              {/* Main image */}
-              <div className="relative bg-white dark:bg-gray-800 p-3 rounded-3xl shadow-2xl">
+            <div className="relative w-[450px] h-80 flex justify-center items-center"> {/* Conteneur élargi */}
+              {/* Image principale (gauche, légèrement inclinée, bien visible) */}
+              <motion.div
+                className="absolute left-0 w-72 h-80 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200/50 dark:border-blue-700/50 transform -rotate-4 z-10"
+                whileHover={{ y: -10, rotate: -2 }}
+                transition={{ duration: 0.3 }}
+              >
                 <img
-                  src={Illustration} // Remplacer par ta photo plus tard
-                  alt="Abdoulaye Traoré au travail"
-                  className="w-full h-auto rounded-2xl"
+                  src={Illustration}
+                  alt="Abdoulaye Traoré professionnel"
+                  className="w-full h-full object-cover rounded-2xl"
+                  loading="lazy"
                 />
-              </div>
+              </motion.div>
+              {/* Image secondaire (décalée haut/droite, superposée, bien visible) */}
+              <motion.div
+                className="absolute top-[-20px] right-[-20px] w-64 h-72 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200/50 dark:border-blue-700/50 transform rotate-4 z-20"
+                whileHover={{ y: -10, rotate: 2 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img
+                  src={WorkImage}
+                  alt="Environnement de travail"
+                  className="w-full h-full object-cover rounded-2xl"
+                  loading="lazy"
+                />
+              </motion.div>
             </div>
             {/* Social Icons */}
-            <div className="flex justify-center gap-4 mt-4">
+            <div className="flex justify-center gap-4 mt-12">
               <motion.a
-                href="https://github.com/Abdoulaye-T" 
+                href="https://github.com/Abdoulaye-T"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -106,7 +121,7 @@ export default function About() {
                 <FaGithub className="w-6 h-6" />
               </motion.a>
               <motion.a
-                href="https://www.linkedin.com/in/abdoulaye-traore-73928924a/" 
+                href="https://www.linkedin.com/in/abdoulaye-traore-73928924a/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -117,7 +132,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Text Content (à droite) */}
+          {/* Text Content (storytelling amélioré) */}
           <div className="space-y-6">
             <div className="relative">
               <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
@@ -127,27 +142,27 @@ export default function About() {
                   Développeur full-stack passionné
                 </h3>
                 <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
-                  Je transforme vos <span className="font-semibold text-blue-600 dark:text-blue-400">idées en solutions digitales</span> performantes et intuitives, avec plus de <span className="font-semibold">3 ans d'expérience</span> en développement web et mobile.
+                  Tout a commencé par une simple curiosité : un premier code qui a résolu un problème réel pour un proche. Aujourd'hui, avec <span className="font-semibold text-blue-600 dark:text-blue-400">plus de 3 ans d'expérience</span>, je transforme cette passion en solutions digitales qui font la différence – des apps web fluides aux systèmes ERP Odoo sur mesure.
+                </p>
+                <p className="leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  Mon parcours m'a mené du développement mobile à l'<span className="font-semibold text-blue-600 dark:text-blue-400">automatisation cloud</span>, en passant par des projets qui allient innovation technique et impact humain. Imaginez : des interfaces intuitives qui boostent la productivité, des infrastructures scalables qui grandissent avec votre business, et du code qui inspire confiance.
                 </p>
                 <p className="leading-relaxed text-gray-600 dark:text-gray-300">
-                  Spécialisé dans <span className="font-semibold text-blue-600 dark:text-blue-400">l'ERP Odoo</span>, je m'intéresse particulièrement au <span className="font-semibold text-blue-600 dark:text-blue-400">cloud computing</span>, à <span className="font-semibold text-blue-600 dark:text-blue-400">l’automatisation DevOps</span> et à l’<span className="font-semibold text-blue-600 dark:text-blue-400">impact de la technologie</span> sur la société. Ainsi, je crée des applications modernes centrées sur l'utilisateur, alliant esthétique et performance.
+                  Ce qui me motive ? Créer avec vous des outils qui ne se contentent pas d'exister, mais qui <span className="font-semibold text-blue-600 dark:text-blue-400">inspirent le changement</span>. Rejoignez-moi maintenant pour écrire cette histoire ensemble.
                 </p>
               </div>
             </div>
 
             <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-2xl border border-blue-200/50 dark:border-blue-700/50">
               <p className="text-center italic text-lg font-medium text-gray-600 dark:text-gray-300">
-                "Construire des solutions numériques qui allient innovation et impact."
+                "Chaque ligne de code est une étape vers un monde plus connecté et efficace – et je suis là pour vous guider."
               </p>
             </div>
 
             <div className="space-y-3">
-              <p className="leading-relaxed text-gray-600 dark:text-gray-300">
-                Mon objectif : résoudre des problèmes réels avec du code clair et une vision centrée utilisateur.
-              </p>
               <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold">
                 <FaRocket />
-                <span>Innover, coder, impacter.</span>
+                <span>Du prototype à la production : ensemble, nous innovons.</span>
               </div>
             </div>
           </div>
