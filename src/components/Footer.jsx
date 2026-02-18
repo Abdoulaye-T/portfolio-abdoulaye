@@ -46,7 +46,7 @@ export default function Footer() {
           {/* Logo et description */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-xl flex items-center justify-center font-bold text-lg">
+              <div className="w-12 h-12 bg-indigo-600 text-white rounded-xl flex items-center justify-center font-bold text-lg">
                 A
               </div>
               <div>
@@ -55,7 +55,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 max-w-md">
-              Passionné par la création d'applications web et mobile innovantes. 
+              Passionné par la création d'applications web et mobile innovantes.
               Toujours à la recherche de nouveaux défis techniques et de collaborations enrichissantes.
             </p>
             <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
@@ -126,7 +126,7 @@ export default function Footer() {
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="text-gray-600 dark:text-gray-400">Disponible pour nouveaux projets</span>
               </div>
-              
+
               <motion.button
                 onClick={scrollToTop}
                 whileHover={{ scale: 1.05 }}

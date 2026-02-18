@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { 
-  GraduationCap, 
-  Cloud, 
-  Code, 
+import {
+  GraduationCap,
+  Cloud,
+  Code,
   Award,
   Calendar,
   CheckCircle,
@@ -67,7 +67,7 @@ const experiences = [
     tags: ["Laravel", "MySQL", "API REST", "Bootstrap", "Git"],
     achievements: [
       "500+ utilisateurs actifs quotidiens",
-      "Architecture scalable implémentée", 
+      "Architecture scalable implémentée",
       "Réduction de 80% du temps de gestion",
       "Interface multilingue (FR/EN)"
     ],
@@ -82,7 +82,7 @@ const experiences = [
     tags: ["Laravel", "MySQL", "API REST", "Bootstrap", "Git"],
     achievements: [
       "500+ utilisateurs actifs quotidiens",
-      "Architecture scalable implémentée", 
+      "Architecture scalable implémentée",
       "Réduction de 80% du temps de gestion",
       "Interface multilingue (FR/EN)"
     ],
@@ -98,7 +98,7 @@ const experiences = [
     achievements: [
       "5 architectures cloud déployées",
       "Automatisation complète des déploiements",
-      "Réduction de 40% des coûts infrastructure", 
+      "Réduction de 40% des coûts infrastructure",
       "Monitoring et alertes configurés"
     ],
     color: "from-yellow-400 to-orange-500" // Dégradé distinct pour se démarquer
@@ -135,33 +135,28 @@ export default function TimelinePortfolio() {
   }, []);
 
   return (
-    <div id="education" className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/30 to-purple-400/30 dark:from-blue-400/20 dark:to-purple-400/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/30 to-purple-400/30 dark:from-blue-400/20 dark:to-purple-400/20 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
+    <section id="education" className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
 
       <div className="relative z-10 container mx-auto px-6 max-w-6xl py-20">
         {/* Header */}
         <div
           id="header"
           data-animate
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible.header ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`text-center mb-16 transition-all duration-1000 ${isVisible.header ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           <div className="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-3 rounded-full border border-gray-200/50 dark:border-blue-700/50 mb-6 shadow-lg">
             <Trophy className="w-5 h-5 text-yellow-500" />
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Excellence & Innovation</span>
           </div>
-          
-          <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-6">
-            Parcours Professionnel
-          </h1>
-          
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Une trajectoire axée sur l'<span className="font-semibold text-blue-600">excellence technique</span> et l'<span className="font-semibold text-purple-600">innovation</span>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            Parcours <span className="text-indigo-600 dark:text-indigo-400">Professionnel</span>
+          </h2>
+
+          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-3xl mx-auto">
+            Une trajectoire axée sur l'<span className="font-semibold text-indigo-600">excellence technique</span> et l'<span className="font-semibold text-indigo-500">innovation</span>
           </p>
         </div>
 
@@ -169,9 +164,8 @@ export default function TimelinePortfolio() {
         <div
           id="tabs"
           data-animate
-          className={`flex justify-center mb-16 transition-all duration-1000 delay-200 ${
-            isVisible.tabs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`flex justify-center mb-16 transition-all duration-1000 delay-200 ${isVisible.tabs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl p-2 shadow-2xl border border-gray-200/50 dark:border-blue-700/50">
             <div className="flex">
@@ -179,11 +173,10 @@ export default function TimelinePortfolio() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`relative px-8 py-4 rounded-xl font-semibold transition-all duration-300 ${
-                    activeTab === tab
-                      ? "text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg"
-                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                  }`}
+                  className={`relative px-8 py-4 rounded-xl font-semibold transition-all duration-300 ${activeTab === tab
+                      ? "text-white bg-indigo-600 shadow-md"
+                      : "text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                    }`}
                 >
                   <span className="flex items-center gap-3">
                     {tab === "education" ? (
@@ -208,10 +201,10 @@ export default function TimelinePortfolio() {
         <div className="relative">
           {/* Desktop Timeline Line */}
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full shadow-lg" />
-          
+
           {/* Mobile Timeline Line */}
           <div className="md:hidden absolute left-8 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full shadow-lg" />
-          
+
           {/* Timeline Items */}
           <div className="space-y-12">
             {currentData.map((item, index) => (
@@ -219,26 +212,23 @@ export default function TimelinePortfolio() {
                 key={index}
                 id={`item-${index}`}
                 data-animate
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                } flex-row transition-all duration-1000 ${
-                  isVisible[`item-${index}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                }`}
+                className={`relative flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  } flex-row transition-all duration-1000 ${isVisible[`item-${index}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                  }`}
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 {/* Desktop Timeline Dot */}
                 <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-20">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${item.color} rounded-full flex items-center justify-center text-white shadow-2xl border-4 border-white dark:border-gray-800 transition-transform duration-300 ${
-                    hoveredCard === index ? 'scale-125 rotate-12' : ''
-                  }`}>
+                  <div className={`w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-white shadow-xl border-4 border-white dark:border-gray-800 transition-transform duration-300 ${hoveredCard === index ? 'scale-110' : ''
+                    }`}>
                     {item.icon}
                   </div>
                 </div>
 
                 {/* Mobile Timeline Dot */}
                 <div className="md:hidden absolute left-8 transform -translate-x-1/2 z-20">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${item.color} rounded-full flex items-center justify-center text-white shadow-xl border-3 border-white dark:border-gray-800`}>
+                  <div className="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg border-2 border-white dark:border-gray-800">
                     {item.icon}
                   </div>
                 </div>
@@ -250,7 +240,7 @@ export default function TimelinePortfolio() {
                       <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-2">
                         {item.title}
                       </h3>
-                      <p className={`text-transparent bg-gradient-to-r ${item.color} bg-clip-text font-semibold mb-2 text-sm md:text-base`}>
+                      <p className="text-indigo-600 dark:text-indigo-400 font-semibold mb-2 text-sm md:text-base">
                         {activeTab === "education" ? item.school : item.company}
                       </p>
                       <div className="flex items-center gap-2 text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-2">
@@ -326,7 +316,7 @@ export default function TimelinePortfolio() {
                   <div className={`w-20 h-20 bg-gradient-to-br ${selectedItem.color} rounded-2xl flex items-center justify-center text-white shadow-lg`}>
                     {selectedItem.icon}
                   </div>
-                  
+
                   <div>
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
                       {selectedItem.title}
@@ -373,7 +363,7 @@ export default function TimelinePortfolio() {
                     {selectedItem.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 text-gray-800 dark:text-gray-200 rounded-full font-medium"
+                        className="px-4 py-2 bg-slate-100 dark:bg-gray-700 text-slate-700 dark:text-slate-300 rounded-full font-medium text-sm"
                       >
                         {tag}
                       </span>
@@ -385,6 +375,6 @@ export default function TimelinePortfolio() {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

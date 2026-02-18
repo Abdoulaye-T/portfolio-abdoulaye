@@ -5,22 +5,35 @@ import { ExternalLink, Github, Eye, Filter } from 'lucide-react';
 const projects = [
   {
     id: 1,
-    title: 'E-Uamsat',
+    title: 'Solid\'Avenir',
     category: 'Web',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
-    description: 'Plateforme de gestion académique complète pour établissements maliens avec système de notes, planning et communication.',
-    stack: ['Laravel', 'MySQL', 'Bootstrap', 'PHP'],
-    link: 'https://github.com/tonprofil/e-uamsat',
-    github: 'https://github.com/tonprofil/e-uamsat',
+    image: 'https://images.unsplash.com/photo-1559028006-448665bd7c7f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YXBwJTIwd2VifGVufDB8fDB8fHww',
+    description: `Conception et développement d’une plateforme de financement participatif basée sur Hedera Hashgraph, permettant des dons transparents, traçables et sécurisés pour 
+    des projets sociaux et environnementaux. La solution intègre la gestion des utilisateurs, des transactions et le suivi d’impact en temps réel.`,
+    stack: ["Web3", 'Python', 'Django', 'SQlite', 'Node.js', 'JavaScript', 'HTML', 'CSS', 'Hedera Hashgraph', 'Hedera Consensus Service', 'Hedera Token Service', 'Smart Contracts'],
+    link: 'https://solidavenir.com/',
+    github: 'https://github.com/dmaiga/solidavenir.git',
     status: 'Production',
-    featured: true
+    featured: false
   },
   {
     id: 2,
-    title: 'App React Native',
+    title: 'E-Uamsat',
+    category: 'Web',
+    image: 'https://images.unsplash.com/photo-1517134191118-9d595e4c8c2b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8',
+    description: "Développement d’une plateforme de gestion académique destinée aux établissements maliens, centralisant la gestion des notes, des emplois du temps et la communication interne afin d’améliorer l’organisation et la transparence académique.",
+    stack: ['Laravel', 'MySQL', 'Bootstrap', 'PHP', 'JavaScript', 'HTML', 'CSS'],
+    link: 'https://github.com/tonprofil/e-uamsat',
+    github: 'https://github.com/tonprofil/e-uamsat',
+    status: 'Production',
+    featured: false
+  },
+  {
+    id: 3,
+    title: 'Tontine Mobile App',
     category: 'Mobile',
     image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&h=300&fit=crop',
-    description: 'Application mobile cross-platform avec authentification, API REST et synchronisation temps réel.',
+    description: "Application mobile cross-platform permettant la gestion de tontines avec authentification sécurisée, API REST et synchronisation des données en temps réel, conçue pour une utilisation simple et fiable sur Android et iOS.",
     stack: ['React Native', 'Node.js', 'MySQL', 'JWT'],
     link: 'https://github.com/tonprofil/app-mobile',
     github: 'https://github.com/tonprofil/app-mobile',
@@ -28,28 +41,62 @@ const projects = [
     featured: true
   },
   {
-    id: 3,
-    title: 'Site vitrine WordPress',
+    id: 4,
+    title: 'Site vitrine Agence Miths SAS',
     category: 'WordPress',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
-    description: 'Site institutionnel responsive pour entreprise pharmaceutique avec CMS personnalisé et optimisation SEO.',
+    image: 'https://images.unsplash.com/photo-1583929260767-9020a3cdc78a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    description: "Conception et mise en ligne d’un site vitrine WordPress optimisé SEO, visant à renforcer la visibilité en ligne, présenter les services de l’entreprise et générer de nouveaux leads.",
     stack: ['WordPress', 'Elementor', 'PHP', 'SEO'],
-    link: 'https://site-client.com',
+    link: 'http://www.miths.tech/',
     status: 'Production',
     featured: false
   },
   {
-    id: 4,
-    title: 'Dashboard Analytics',
+    id: 5,
+    title: 'PISE (Plateforme d\'Innovation Sociale et Écologique)',
     category: 'Web',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
-    description: 'Tableau de bord analytique avec visualisations interactives et rapports automatisés.',
-    stack: ['React', 'D3.js', 'Node.js', 'MongoDB'],
-    link: '#',
+    image: 'https://images.unsplash.com/photo-1702047054352-cf264d3b1a9c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBsYXRlZm9ybWUlMjB3ZWIlMjBlY29sb2dpcXVlfGVufDB8fDB8fHww',
+    description: 'Plateforme web dédiée à la promotion de projets innovants axés sur le développement durable et l\'impact social positif.',
+    stack: ['React', 'Vite', 'Node.js'],
+    link: 'https://pise.vercel.app/',
     github: '#',
     status: 'Production',
     featured: true
-  }
+  },
+  {
+    id: 6,
+    title: 'Site vitrine HUB BY FIBRES',
+    category: 'WordPress',
+    image: 'https://images.unsplash.com/photo-1530435460869-d13625c69bbf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzl8fHNpdGUlMjB3b3JkcHJlc3MlMjB0ZXh0aWxlfGVufDB8fDB8fHww',
+    description: 'Site vitrine pour une  entreprise sociale malienne spécialisée dans la valorisation des déchets textiles à travers l’innovation, la recherche et la production de matériaux écologiques.',
+    stack: ['WordPress', "Astra (Parent/Child)", 'Elementor', 'PHP', 'SEO'],
+    link: '#',
+    status: 'Développement',
+    featured: true
+  },
+  {
+    id: 7,
+    title: 'Site vitrine GECAF SASU',
+    category: 'WordPress',
+    image: 'https://images.unsplash.com/photo-1571677246347-5040036b95cc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQzfHx8ZW58MHx8fHx8',
+    description: 'Site vitrine pour un Cabinet d\'Expertise Comptable et de Fiscalité au Mali. L\'objectif est de présenter les services offerts par le cabinet, son équipe, ainsi que des ressources utiles pour les clients. Pour améliorer la visibilité en ligne du cabinet et attirer de nouveaux clients.',
+    stack: ['WordPress', "Astra (Child)", 'Elementor', 'PHP', 'SEO'],
+    link: '#',
+    status: 'Développement',
+    featured: true
+  },
+  {
+    id: 8,
+    title: 'Blog',
+    category: 'Web',
+    image: 'https://images.unsplash.com/photo-1517134191118-9d595e4c8c2b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8',
+    description: "Une plateforme de blog en ligne permettant à un individu ou une organisation de publier régulièrement des articles, des opinions, des informations et des contenus multimédias. Application web basée sur Laravel avec une interface Blade et Tailwind CSS. Version 1.0 avec gestion des bases de données, des routes et des tests unitaires.",
+    stack: ['Laravel', 'MySQL', 'Tailwind', 'PHP', 'JavaScript', 'HTML', 'CSS'],
+    link: '#',
+    github: 'https://github.com/Abdoulaye-T/Blog.git',
+    status: 'Développement',
+    featured: false
+  },
 ];
 
 const categories = ['Tous', 'Web', 'Mobile', 'WordPress'];
@@ -59,14 +106,14 @@ export default function Portfolio() {
   const [filter, setFilter] = useState('Tous');
   const [showAll, setShowAll] = useState(false);
 
-  const filteredProjects = filter === 'Tous' 
-    ? projects 
+  const filteredProjects = filter === 'Tous'
+    ? projects
     : projects.filter(p => p.category === filter);
 
   const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 6);
 
   const getStatusColor = (status) => {
-    switch(status) {
+    switch (status) {
       case 'Production': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
       case 'Développement': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
       default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200';
@@ -106,11 +153,10 @@ export default function Portfolio() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setFilter(cat)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                filter === cat
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-blue-300 hover:text-blue-600'
-              }`}
+              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${filter === cat
+                  ? 'bg-indigo-600 text-white shadow-lg'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-indigo-300 hover:text-indigo-600'
+                }`}
             >
               {cat}
             </motion.button>
@@ -128,9 +174,8 @@ export default function Portfolio() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 ${
-                  project.featured ? 'ring-2 ring-blue-100 dark:ring-blue-900' : ''
-                }`}
+                className={`group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 ${project.featured ? 'ring-2 ring-blue-100 dark:ring-blue-900' : ''
+                  }`}
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -161,7 +206,7 @@ export default function Portfolio() {
                       {project.category}
                     </span>
                   </div>
-                  
+
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
                     {project.description}
                   </p>
@@ -185,7 +230,7 @@ export default function Portfolio() {
                   <div className="flex gap-3">
                     <button
                       onClick={() => setSelected(project)}
-                      className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+                      className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg font-medium transition-colors"
                     >
                       <Eye size={16} />
                       Détails
@@ -287,7 +332,7 @@ export default function Portfolio() {
                       href={selected.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition-colors"
+                      className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-lg font-medium transition-colors"
                     >
                       <ExternalLink size={18} />
                       Voir le projet

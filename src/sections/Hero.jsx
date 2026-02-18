@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
-import { Download, ArrowDown, Code, Globe, Smartphone, Settings } from "lucide-react";
+import { Download, ArrowRight, Code, Globe, Smartphone, Settings } from "lucide-react";
 import { useState, useEffect } from "react";
 import Photo from "../assets/a1.jpg"; // Import your professional photo
 
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0);
   const roles = [
-    { text: "Développeur Full Stack", icon: Code },
-    { text: " Mobile", icon: Smartphone },
-    { text: " WordPress", icon: Globe },
-    { text: " ERP Odoo", icon: Settings }
+    { text: "Développeur Web Full Stack", icon: Code },
+    { text: "Applications Mobile (React Native)", icon: Smartphone },
+    { text: "Solutions WordPress avancées", icon: Globe },
+    { text: "ERP Odoo sur mesure", icon: Settings }
   ];
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,7 +66,7 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-screen flex items-center">
         <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
-          
+
           {/* Content */}
           <motion.div
             variants={containerVariants}
@@ -78,7 +79,7 @@ export default function Hero() {
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                 Disponible pour nouveaux projets
               </div>
-              
+
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                 <span className="block">Abdoulaye</span>
                 <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
@@ -97,7 +98,7 @@ export default function Hero() {
                   transition={{ duration: 0.4 }}
                   className="flex items-center gap-3"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center">
                     {(() => {
                       const IconComponent = roles[currentRole].icon;
                       return <IconComponent className="w-6 h-6 text-white" />;
@@ -108,33 +109,35 @@ export default function Hero() {
                   </span>
                 </motion.div>
               </div>
-              
+
               <p className="text-xl text-gray-300 max-w-lg leading-relaxed">
-                Je transforme vos idées en solutions digitales performantes. 
-                Expert en développement moderne avec un focus sur l'innovation et la qualité.
+                J’accompagne entreprises et porteurs de projets dans la conception
+                d’applications web et systèmes digitaux fiables, performants et évolutifs.
+                Du prototype à la mise en production, je développe des solutions orientées
+                utilisateurs et résultats.
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
               <motion.a
-                href="/cv-abdoulaye-traore.pdf"
+                href="/Abdoulaye_Traoré_CV_développeur_Fullstack.pdf"
                 download
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 group"
               >
                 <Download className="w-5 h-5 group-hover:animate-pulse" />
                 Télécharger mon CV
               </motion.a>
-              
+
               <motion.a
                 href="#portfolio"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm hover:bg-white/15 text-white font-semibold px-8 py-4 rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm hover:bg-white/15 text-white font-semibold px-8 py-4 rounded-xl border border-white/20 hover:border-white/30 transition-all duration-300 group"
               >
                 Voir mes projets
-                <ArrowDown className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
               </motion.a>
             </motion.div>
 
@@ -144,8 +147,9 @@ export default function Hero() {
                 <div className="text-2xl font-bold text-white">3+</div>
                 <div className="text-sm text-gray-400">Années d'expérience</div>
               </div>
+              <div className="w-px h-10 bg-white/20" />
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">10+</div>
+                <div className="text-2xl font-bold text-white">8+</div>
                 <div className="text-sm text-gray-400">Projets réalisés</div>
               </div>
               {/* <div className="text-center">
@@ -189,13 +193,27 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-blue-900/20"></div>
               </motion.div>
 
-              {/* Éléments flottants simplifiés */}
+              {/* Badges flottants */}
               <motion.div
                 whileHover={{ y: -3, scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg cursor-pointer"
+                className="absolute -top-4 -right-4 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg cursor-pointer"
               >
                 <Code className="w-6 h-6 text-white" />
+              </motion.div>
+              <motion.div
+                whileHover={{ y: -3, scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                className="absolute -bottom-4 -left-4 w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center shadow-lg cursor-pointer border border-white/10"
+              >
+                <Globe className="w-6 h-6 text-indigo-400" />
+              </motion.div>
+              <motion.div
+                whileHover={{ y: -3, scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                className="absolute top-1/2 -right-6 w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center shadow-lg cursor-pointer border border-white/10"
+              >
+                <Smartphone className="w-5 h-5 text-indigo-400" />
               </motion.div>
             </motion.div>
           </motion.div>
