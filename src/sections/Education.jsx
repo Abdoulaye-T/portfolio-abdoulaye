@@ -16,6 +16,16 @@ import {
 
 const educations = [
   {
+    title: "Certification Hedera Developer",
+    school: "Hedera & Orange Digital Center Mali",
+    date: "Septembre 2025",
+    description: "Formation intensive sur l'écosystème Hedera avec focus sur l'architecture Hashgraph, les Smart Contracts, et les applications décentralisées. Déployé une application décentralisée pour un client fictif avec Hedera et Hashgraph. Certification Hedera obtenue.",
+    icon: <Cloud className="w-5 h-5" />,
+    tags: ["Hedera", "Hashgraph", "Smart Contracts", "Decentralized Applications", "Tokenization", "Web3"],
+    level: "Certifié Hedera",
+    color: "from-blue-500 to-purple-500"
+  },
+  {
     title: "Formation AWS re/Start – Cloud Computing",
     school: "Amazon Web Services & Orange Digital Center Mali",
     date: "Août 2024 – Novembre 2024",

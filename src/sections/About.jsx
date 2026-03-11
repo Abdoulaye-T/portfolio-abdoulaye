@@ -33,7 +33,6 @@ export default function About() {
       emoji: "☁️",
       techs: [
         { name: "AWS", icon: SiAmazon, color: "#FF9900" },
-        { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
         { name: "Docker", icon: SiDocker, color: "#2496ED" },
         { name: "Git", icon: SiGit, color: "#F05032" },
       ]

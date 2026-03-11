@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, ArrowRight, Code, Globe, Smartphone, Settings } from "lucide-react";
 import { useState, useEffect } from "react";
-import Photo from "../assets/a1.jpg"; // Import your professional photo
-
+import Photo from "../assets/Abdoulaye-picture.jpg";
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0);
   const roles = [
@@ -180,12 +179,12 @@ export default function Hero() {
             >
               <motion.div
                 variants={itemVariants}
-                className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl"
+                className="relative w-80 h-100 lg:w-96 lg:h-100 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl"
                 whileHover={{ scale: 1.02, rotate: 1 }}
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src={Photo} // Remplace par le chemin de ta photo
+                  src={Photo}
                   alt="Abdoulaye Traoré"
                   className="w-full h-full object-cover"
                 />
