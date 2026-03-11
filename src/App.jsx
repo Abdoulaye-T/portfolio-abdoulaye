@@ -1,8 +1,8 @@
 import Navbar from "./components/Navbar";
-import Hero from "./sections/Hero"; // On testera avec juste le Hero pour l’instant
+import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Services from "./sections/Services";
-import Portfolio from "./sections/Portfolio"; 
+import Portfolio from "./sections/Portfolio";
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 import Education from "./sections/Education";
@@ -20,7 +20,6 @@ function App() {
         <Portfolio />
         <Contact />
         <Footer />
-        {/* D'autres sections peuvent être ajoutées ici */}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import {
   Code,
   Smartphone,
@@ -6,11 +6,13 @@ import {
   ArrowRight,
   Check,
   Trophy,
-  X,
-  ExternalLink,
+  Globe,
+  ChevronLeft,
+  ChevronRight,
   Layers,
   Cpu,
-  Globe,
+  ExternalLink,
+  X,
 } from 'lucide-react';
 
 // ─── Données ────────────────────────────────────────────────────────────────
@@ -23,14 +25,17 @@ const services = [
     icon: Code,
     popular: false,
     badge: 'Expert',
+    accentClass: 'from-indigo-500 to-violet-600',
+    iconBg: 'bg-indigo-50 dark:bg-indigo-900/30',
+    iconColor: 'text-indigo-600 dark:text-indigo-400',
     description:
-      "Je conçois et développe des applications web adaptées aux besoins réels des entreprises : outils internes, plateformes métier, dashboards, APIs et systèmes connectés. J'interviens sur l'ensemble du cycle de vie du projet, de la conception technique à la mise en production, avec une attention particulière portée à la performance, à la sécurité et à la maintenabilité du code.",
+      "Je conçois et développe des applications web adaptées aux besoins réels des entreprises : outils internes, plateformes métier, dashboards et APIs. J'interviens sur l'ensemble du cycle de vie, de la conception technique à la mise en production.",
     features: [
-      'Applications web sur mesure',
-      'API REST & intégrations tierces',
-      'Bases de données relationnelles',
-      'Sécurité, authentification et gestion des accès',
-      'Tests, optimisation des performances et déploiement',
+      { label: 'Applications web sur mesure', detail: 'Dashboards, CRM internes, outils métier adaptés à vos processus' },
+      { label: 'APIs REST & intégrations tierces', detail: 'Connexion à des services externes (paiement, CRM, ERP…)' },
+      { label: 'Bases de données relationnelles', detail: 'Conception, optimisation et sécurisation des schémas MySQL/PostgreSQL' },
+      { label: 'Authentification & gestion des accès', detail: 'JWT, OAuth2, gestion des rôles et permissions' },
+      { label: 'Tests, performances & déploiement', detail: 'CI/CD, monitoring, optimisation des temps de réponse' },
     ],
     technologies: ['React', 'Angular', 'Laravel', 'Node.js', 'MySQL', 'Tailwind CSS'],
   },
@@ -41,14 +46,17 @@ const services = [
     icon: Globe,
     popular: true,
     badge: 'Populaire',
+    accentClass: 'from-amber-400 to-orange-500',
+    iconBg: 'bg-amber-50 dark:bg-amber-900/20',
+    iconColor: 'text-amber-600 dark:text-amber-400',
     description:
-      "Je développe des sites WordPress avancés pour les entreprises souhaitant une présence en ligne professionnelle, performante et évolutive. Au-delà du design, je veille à la qualité technique : structure du code, performance, sécurité, SEO et facilité de maintenance.",
+      "Je développe des sites WordPress avancés pour les entreprises souhaitant une présence en ligne professionnelle et performante. Au-delà du design, je veille à la qualité technique, à la sécurité et au SEO.",
     features: [
-      'Sites vitrine et plateformes WordPress sur mesure',
-      'Thèmes enfants et personnalisations avancées',
-      'Optimisation SEO et performances',
-      'Sécurité et sauvegardes',
-      'Maintenance et évolutions continues',
+      { label: 'Sites vitrine & plateformes sur mesure', detail: 'Design unique, développement de thèmes enfants, page builders avancés' },
+      { label: 'Personnalisations & fonctionnalités métier', detail: 'Formulaires complexes, CPT, ACF, plugins spécifiques' },
+      { label: 'Optimisation SEO & performances', detail: 'Core Web Vitals, balises meta, sitemap, score Lighthouse +90' },
+      { label: 'Sécurité & sauvegardes automatisées', detail: 'Firewall, mises à jour gérées, sauvegardes quotidiennes offsite' },
+      { label: 'Maintenance & évolutions continues', detail: 'Suivi mensuel, ajout de fonctionnalités, support réactif' },
     ],
     technologies: ['WordPress', 'PHP', 'Elementor', 'Astra', 'SEO technique'],
   },
@@ -59,33 +67,39 @@ const services = [
     icon: Smartphone,
     popular: false,
     badge: 'Scalable',
+    accentClass: 'from-emerald-500 to-teal-600',
+    iconBg: 'bg-emerald-50 dark:bg-emerald-900/20',
+    iconColor: 'text-emerald-600 dark:text-emerald-400',
     description:
-      "Je développe des applications mobiles cross-platform connectées à des back-ends fiables, permettant de centraliser les données et d'offrir une expérience utilisateur fluide sur iOS et Android. Ces applications sont pensées pour s'intégrer naturellement à vos outils existants.",
+      "Je développe des applications mobiles cross-platform connectées à des back-ends fiables, offrant une expérience fluide sur iOS et Android, intégrées naturellement à vos outils existants.",
     features: [
-      'Applications mobiles React Native',
-      'Connexion API & synchronisation des données',
-      'Authentification sécurisée',
-      'Déploiement et support initial',
+      { label: 'Applications React Native iOS & Android', detail: 'Un seul codebase, expérience native sur les deux plateformes' },
+      { label: 'Synchronisation API & données temps réel', detail: 'REST, WebSockets, notifications push' },
+      { label: 'Authentification sécurisée', detail: 'Biométrie, JWT, OAuth, gestion des sessions' },
+      { label: 'Publication & support initial', detail: 'Déploiement App Store & Google Play, suivi post-lancement' },
     ],
-    technologies: ['React Native', 'Node.js', 'APIs REST', 'Firebase'],
+    technologies: ['React Native', 'Expo', 'Node.js', 'APIs REST', 'Firebase'],
   },
   {
     id: 4,
-    title: 'ERP, Cloud & Automatisation',
-    subtitle: 'Optimisation des processus et systèmes métiers',
+    title: 'ERP, Cloud & DevOps',
+    subtitle: 'Automatisation des processus et systèmes métiers',
     icon: Settings,
     popular: false,
     badge: 'ROI Garanti',
+    accentClass: 'from-sky-500 to-blue-600',
+    iconBg: 'bg-sky-50 dark:bg-sky-900/20',
+    iconColor: 'text-sky-600 dark:text-sky-400',
     description:
-      "J'accompagne les entreprises dans l'automatisation de leurs processus métiers grâce à des solutions ERP et cloud adaptées à leurs besoins. Mon objectif est de simplifier les flux de travail, fiabiliser les données et améliorer la productivité des équipes.",
+      "J'accompagne les entreprises dans l'automatisation de leurs processus métiers via des solutions ERP et cloud adaptées. Objectif : simplifier les flux, fiabiliser les données et booster la productivité.",
     features: [
-      'Implémentation et personnalisation Odoo',
-      'Développement de modules métier',
-      'Déploiement cloud et configuration des environnements',
-      'Automatisation de tâches et intégrations externes',
-      'Formation équipes incluse',
+      { label: 'Intégration complète Odoo (ERP)', detail: 'Paramétrage, migration de données, formation équipes incluse' },
+      { label: 'Modules Odoo sur mesure', detail: 'Développement Python/XML pour des besoins métier spécifiques' },
+      { label: 'Déploiement cloud & infrastructure', detail: 'AWS, serveurs VPS, conteneurisation Docker, Vagrant' },
+      { label: 'Automatisation & intégrations externes', detail: 'Webhooks, scripts automatisés, connecteurs tiers' },
+      { label: 'CI/CD, Tests & Monitoring', detail: 'GitLab CI, pipelines automatisés, alertes de performance' },
     ],
-    technologies: ['Odoo', 'AWS', 'Docker', 'CI/CD'],
+    technologies: ['Odoo', 'AWS', 'Docker', 'CI/CD', 'GitLab', 'Vagrant', 'Jmeter', 'Ansible', 'Jenkins'],
   },
 ];
 
@@ -97,103 +111,135 @@ const globalStats = [
 // ─── Composant principal ─────────────────────────────────────────────────────
 
 export default function Services() {
+  const [current, setCurrent] = useState(0);
   const [selectedService, setSelectedService] = useState(null);
-  const [visibleIds, setVisibleIds] = useState(new Set());
+  const [isPaused, setIsPaused] = useState(false);
+  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
+  const [animating, setAnimating] = useState(false);
+  const timerRef = useRef(null);
   const sectionRef = useRef(null);
+  const [headerVisible, setHeaderVisible] = useState(false);
 
-  // Intersection Observer pour les animations d'entrée
+  const total = services.length;
+
+  // Intersection observer for header animation
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleIds((prev) => new Set([...prev, entry.target.dataset.id]));
-          }
-        });
-      },
-      { threshold: 0.12 }
+      ([entry]) => { if (entry.isIntersecting) setHeaderVisible(true); },
+      { threshold: 0.1 }
     );
-
-    const targets = sectionRef.current?.querySelectorAll('[data-id]') ?? [];
-    targets.forEach((el) => observer.observe(el));
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // Fermer le modal avec Escape
+  const goTo = useCallback(
+    (idx, dir = 1) => {
+      if (animating) return;
+      setAnimating(true);
+      setDirection(dir);
+      setCurrent(idx);
+      setTimeout(() => setAnimating(false), 400);
+    },
+    [animating]
+  );
+
+  const goPrev = () => {
+    const idx = (current - 1 + total) % total;
+    goTo(idx, -1);
+    resetTimer();
+  };
+
+  const goNext = useCallback(() => {
+    const idx = (current + 1) % total;
+    goTo(idx, 1);
+  }, [current, total, goTo]);
+
+  const resetTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(goNext, 5000);
+  };
+
+  // Auto-play
+  useEffect(() => {
+    if (!isPaused) {
+      timerRef.current = setInterval(goNext, 5000);
+    }
+    return () => clearInterval(timerRef.current);
+  }, [isPaused, goNext]);
+
+  // Keyboard nav + Escape for modal
   useEffect(() => {
     const handleKey = (e) => {
-      if (e.key === 'Escape') setSelectedService(null);
+      if (selectedService) {
+        if (e.key === 'Escape') setSelectedService(null);
+        return;
+      }
+      if (e.key === 'ArrowLeft') goPrev();
+      if (e.key === 'ArrowRight') { goNext(); resetTimer(); }
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, []);
+  }, [selectedService, current, goNext]);
 
-  const isVisible = (id) => visibleIds.has(String(id));
+  const service = services[current];
+  const Icon = service.icon;
 
   return (
     <section
       id="services"
       ref={sectionRef}
-      className="relative py-24 bg-slate-50 dark:bg-gray-900 overflow-hidden"
+      className="relative py-20 bg-slate-50 dark:bg-gray-900 overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Décoration de fond : grille subtile */}
+      {/* Background grid */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            'radial-gradient(circle, rgba(99,102,241,0.06) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgba(99,102,241,0.06) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
 
         {/* ── En-tête ── */}
         <div
-          data-id="header"
-          className={`text-center mb-16 transition-all duration-700 ${isVisible('header') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
+          className={`text-center mb-12 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          {/* Pill badge */}
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 mb-5">
             <Layers size={13} />
             Solutions Digitales Sur Mesure
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-3">
             Mes{' '}
             <span className="text-indigo-600 dark:text-indigo-400">Services</span>
           </h2>
 
-          <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            J'accompagne les entreprises et organisations dans la conception, le développement
-            et la maintenance de solutions digitales fiables, performantes et évolutives.
+          <p className="text-base text-gray-500 dark:text-gray-400 max-w-xl mx-auto leading-relaxed">
+            J'accompagne les entreprises dans la conception, le développement et la maintenance de solutions digitales fiables et évolutives.
           </p>
 
-          {/* Séparateur */}
-          <div className="mt-8 flex items-center justify-center gap-3">
+          <div className="mt-6 flex items-center justify-center gap-3">
             <div className="h-px w-12 bg-gray-300 dark:bg-gray-700" />
             <div className="w-2 h-2 rounded-full bg-indigo-500" />
             <div className="h-px w-12 bg-gray-300 dark:bg-gray-700" />
           </div>
         </div>
 
-        {/* ── Statistiques globales ── */}
-        <div
-          data-id="stats"
-          className={`grid grid-cols-2 gap-4 max-w-sm mx-auto mb-16 transition-all duration-700 delay-100 ${isVisible('stats') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-        >
+        {/* ── Stats ── */}
+        <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto mb-10">
           {globalStats.map((stat, i) => {
-            const Icon = stat.icon;
+            const StatIcon = stat.icon;
             return (
               <div
                 key={i}
-                className="flex flex-col items-center gap-2 p-5 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:border-indigo-300 dark:hover:border-indigo-600 transition-colors duration-300"
+                className="flex flex-col items-center gap-1.5 p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm"
               >
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-900/30">
-                  <Icon size={18} className="text-indigo-600 dark:text-indigo-400" />
+                <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-900/30">
+                  <StatIcon size={16} className="text-indigo-600 dark:text-indigo-400" />
                 </div>
                 <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">{stat.value}</span>
                 <span className="text-xs text-gray-500 dark:text-gray-400 text-center">{stat.label}</span>
@@ -202,151 +248,158 @@ export default function Services() {
           })}
         </div>
 
-        {/* ── Grille des services ── */}
-        <div className="grid md:grid-cols-2 gap-6 mb-20">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={service.id}
-                data-id={`service-${service.id}`}
-                className={`transition-all duration-700 ${isVisible(`service-${service.id}`)
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-8'
-                  }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <div className="group h-full flex flex-col bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+        {/* ── Slider ── */}
+        <div className="relative mb-10">
 
-                  {/* Bande colorée en haut pour le service populaire */}
-                  {service.popular && (
-                    <div className="h-1 w-full bg-indigo-500" />
-                  )}
+          {/* Indicateurs (dots) */}
+          <div className="flex justify-center gap-2 mb-5">
+            {services.map((s, i) => (
+              <button
+                key={s.id}
+                onClick={() => { goTo(i, i > current ? 1 : -1); resetTimer(); }}
+                aria-label={`Service ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? 'w-8 bg-indigo-500' : 'w-3 bg-gray-300 dark:bg-gray-600 hover:bg-indigo-300 dark:hover:bg-indigo-700'}`}
+              />
+            ))}
+          </div>
 
-                  <div className="flex flex-col flex-1 p-7">
-                    {/* En-tête de la carte */}
-                    <div className="flex items-start justify-between mb-5">
-                      <div className="flex items-center gap-4">
-                        <div
-                          className={`flex items-center justify-center w-12 h-12 rounded-xl ${service.popular
-                            ? 'bg-amber-50 dark:bg-amber-900/20'
-                            : 'bg-indigo-50 dark:bg-indigo-900/30'
-                            }`}
-                        >
-                          <Icon
-                            size={22}
-                            className={
-                              service.popular
-                                ? 'text-amber-600 dark:text-amber-400'
-                                : 'text-indigo-600 dark:text-indigo-400'
-                            }
-                          />
-                        </div>
-                        <div>
-                          <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 leading-snug">
-                            {service.title}
-                          </h3>
-                          <p className="text-xs text-indigo-600 dark:text-indigo-400 mt-0.5">
-                            {service.subtitle}
-                          </p>
-                        </div>
+          {/* Numérotation */}
+          <div className="flex items-center justify-between mb-4 px-1">
+            <button
+              onClick={goPrev}
+              className="flex items-center justify-center w-9 h-9 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:border-indigo-400 hover:text-indigo-600 dark:hover:border-indigo-500 dark:hover:text-indigo-400 transition-all duration-200 text-gray-500 dark:text-gray-400"
+              aria-label="Service précédent"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <span className="text-xs font-semibold text-gray-400 dark:text-gray-500 tabular-nums">
+              {String(current + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+            </span>
+            <button
+              onClick={() => { goNext(); resetTimer(); }}
+              className="flex items-center justify-center w-9 h-9 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:border-indigo-400 hover:text-indigo-600 dark:hover:border-indigo-500 dark:hover:text-indigo-400 transition-all duration-200 text-gray-500 dark:text-gray-400"
+              aria-label="Service suivant"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+
+          {/* Card principale */}
+          <div
+            key={service.id}
+            className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden"
+            style={{
+              animation: 'slideIn 0.35s cubic-bezier(0.4,0,0.2,1)',
+            }}
+          >
+            {/* Barre gradient en haut */}
+            <div className={`h-1 w-full bg-gradient-to-r ${service.accentClass}`} />
+
+            <div className="p-7 md:p-9">
+              <div className="flex flex-col md:flex-row md:gap-10">
+
+                {/* Colonne gauche */}
+                <div className="flex-1 mb-6 md:mb-0">
+                  {/* Header service */}
+                  <div className="flex items-start gap-4 mb-5">
+                    <div className={`flex-shrink-0 flex items-center justify-center w-13 h-13 w-12 h-12 rounded-xl ${service.iconBg}`}>
+                      <Icon size={22} className={service.iconColor} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 leading-snug">
+                          {service.title}
+                        </h3>
+                        {service.popular && (
+                          <span className="flex-shrink-0 px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
+                            {service.badge}
+                          </span>
+                        )}
+                        {!service.popular && (
+                          <span className="flex-shrink-0 px-2 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 dark:bg-gray-700 dark:text-slate-300">
+                            {service.badge}
+                          </span>
+                        )}
                       </div>
-
-                      {/* Badge */}
-                      <span
-                        className={`flex-shrink-0 ml-3 px-2.5 py-1 rounded-full text-xs font-semibold ${service.popular
-                          ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300'
-                          : 'bg-slate-100 text-slate-600 dark:bg-gray-700 dark:text-slate-300'
-                          }`}
-                      >
-                        {service.badge}
-                      </span>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
-                      {service.description}
-                    </p>
-
-                    {/* Fonctionnalités */}
-                    <div className="mb-5">
-                      <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
-                        Ce qui est inclus
-                      </p>
-                      <ul className="space-y-2">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2.5 text-sm text-gray-700 dark:text-gray-300">
-                            <Check
-                              size={14}
-                              className="flex-shrink-0 mt-0.5 text-indigo-500 dark:text-indigo-400"
-                            />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {service.technologies.map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2.5 py-1 text-xs bg-slate-100 dark:bg-gray-700 text-slate-600 dark:text-slate-300 rounded-md font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* CTA */}
-                    <div className="mt-auto">
-                      <button
-                        onClick={() => setSelectedService(service)}
-                        className="group/btn w-full flex items-center justify-center gap-2 py-3 px-5 rounded-xl text-sm font-semibold bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-indigo-700 dark:hover:bg-indigo-100 transition-colors duration-300"
-                      >
-                        En savoir plus
-                        <ArrowRight
-                          size={15}
-                          className="group-hover/btn:translate-x-1 transition-transform duration-200"
-                        />
-                      </button>
+                      <p className="text-sm text-indigo-600 dark:text-indigo-400">{service.subtitle}</p>
                     </div>
                   </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
+                    {service.description}
+                  </p>
+
+                  {/* Techs */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {service.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-1 text-xs bg-slate-100 dark:bg-gray-700 text-slate-600 dark:text-slate-300 rounded-md font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <button
+                    onClick={() => setSelectedService(service)}
+                    className="group/btn inline-flex items-center gap-2 py-2.5 px-5 rounded-xl text-sm font-semibold bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-indigo-700 dark:hover:bg-indigo-100 transition-colors duration-300"
+                  >
+                    Voir le détail
+                    <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform duration-200" />
+                  </button>
                 </div>
+
+                {/* Colonne droite – liste features */}
+                <div className="md:w-64 lg:w-72 flex-shrink-0">
+                  <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
+                    Ce qui est inclus
+                  </p>
+                  <ul className="space-y-3">
+                    {service.features.map((f, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <Check size={14} className="flex-shrink-0 mt-0.5 text-indigo-500 dark:text-indigo-400" />
+                        <div>
+                          <span className="text-sm font-medium text-gray-800 dark:text-gray-200 block leading-snug">
+                            {f.label}
+                          </span>
+                          <span className="text-xs text-gray-400 dark:text-gray-500 leading-snug">
+                            {f.detail}
+                          </span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
               </div>
-            );
-          })}
+            </div>
+          </div>
         </div>
 
         {/* ── CTA global ── */}
-        <div
-          data-id="cta"
-          className={`transition-all duration-700 delay-300 ${isVisible('cta') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-        >
-          {/* Ligne décorative */}
-          <div className="flex items-center gap-4 mb-10">
+        <div>
+          <div className="flex items-center gap-4 mb-8">
             <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
-            <Cpu size={16} className="text-gray-400 dark:text-gray-600" />
+            <Cpu size={14} className="text-gray-400 dark:text-gray-600" />
             <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
           </div>
 
-          <div className="bg-gray-900 dark:bg-gray-800 rounded-2xl p-10 md:p-14 text-center border border-gray-800 dark:border-gray-700">
+          <div className="bg-gray-900 dark:bg-gray-800 rounded-2xl p-8 md:p-12 text-center border border-gray-800 dark:border-gray-700">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
               Un projet à concrétiser ?
             </h3>
-            <p className="text-gray-400 mb-8 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-              Discutons de vos besoins et voyons comment construire une solution adaptée à votre contexte.
+            <p className="text-gray-400 mb-7 max-w-md mx-auto text-sm leading-relaxed">
+              Discutons de vos besoins et construisons ensemble une solution adaptée à votre contexte.
             </p>
             <a
               href="#contact"
-              className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-white text-gray-900 rounded-xl font-semibold text-sm hover:bg-indigo-50 transition-colors duration-300 shadow-sm"
+              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-white text-gray-900 rounded-xl font-semibold text-sm hover:bg-indigo-50 transition-colors duration-300 shadow-sm"
             >
               Me contacter
-              <ArrowRight
-                size={15}
-                className="group-hover:translate-x-1 transition-transform duration-200"
-              />
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
             </a>
           </div>
         </div>
@@ -363,26 +416,13 @@ export default function Services() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header modal */}
+            <div className={`h-1 w-full bg-gradient-to-r ${selectedService.accentClass}`} />
             <div className="sticky top-0 z-10 flex items-start justify-between gap-4 p-6 bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
               <div className="flex items-center gap-4">
-                <div
-                  className={`flex items-center justify-center w-11 h-11 rounded-xl ${selectedService.popular
-                    ? 'bg-amber-50 dark:bg-amber-900/20'
-                    : 'bg-indigo-50 dark:bg-indigo-900/30'
-                    }`}
-                >
+                <div className={`flex items-center justify-center w-11 h-11 rounded-xl ${selectedService.iconBg}`}>
                   {(() => {
-                    const Icon = selectedService.icon;
-                    return (
-                      <Icon
-                        size={20}
-                        className={
-                          selectedService.popular
-                            ? 'text-amber-600 dark:text-amber-400'
-                            : 'text-indigo-600 dark:text-indigo-400'
-                        }
-                      />
-                    );
+                    const ModalIcon = selectedService.icon;
+                    return <ModalIcon size={20} className={selectedService.iconColor} />;
                   })()}
                 </div>
                 <div>
@@ -405,29 +445,27 @@ export default function Services() {
 
             {/* Corps modal */}
             <div className="p-6 space-y-6">
-              {/* Description */}
-              <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {selectedService.description}
-                </p>
-              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {selectedService.description}
+              </p>
 
-              {/* Features */}
               <div>
                 <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
                   Ce qui est inclus
                 </p>
-                <ul className="space-y-2.5">
-                  {selectedService.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-sm text-gray-700 dark:text-gray-300">
+                <ul className="space-y-3">
+                  {selectedService.features.map((f, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
                       <Check size={14} className="flex-shrink-0 mt-0.5 text-indigo-500" />
-                      <span>{feature}</span>
+                      <div>
+                        <span className="text-sm font-medium text-gray-800 dark:text-gray-200 block">{f.label}</span>
+                        <span className="text-xs text-gray-400 dark:text-gray-500">{f.detail}</span>
+                      </div>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Technologies */}
               <div>
                 <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
                   Technologies
@@ -444,7 +482,6 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* CTA modal */}
               <div className="pt-2">
                 <a
                   href="#contact"
@@ -459,6 +496,14 @@ export default function Services() {
           </div>
         </div>
       )}
+
+      {/* ── Animation keyframe ── */}
+      <style>{`
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(14px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 }

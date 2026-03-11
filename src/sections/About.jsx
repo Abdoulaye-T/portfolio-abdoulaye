@@ -1,12 +1,17 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowRight, FaCode, FaLightbulb, FaRocket, FaHeart, FaGithub, FaLinkedin } from "react-icons/fa";
 import { useState } from "react";
-import { SiReact, SiLaravel, SiTailwindcss, SiAmazon, SiNodedotjs, SiMysql, SiGit, SiAngular, SiFirebase, SiFigma, SiDocker, SiWordpress, SiMongodb, SiPhp, SiJavascript } from "react-icons/si";
-import Illustration from "../assets/a2.jpg"; // Image principale (toi professionnel)
-import WorkImage from "../assets/a1.jpg"; // Image secondaire (setup de travail)
+import {
+  SiReact, SiLaravel, SiTailwindcss, SiAmazon, SiNodedotjs,
+  SiMysql, SiGit, SiAngular, SiFirebase, SiFigma, SiDocker,
+  SiWordpress, SiMongodb, SiPhp, SiJavascript, SiGitlab,
+  SiPostgresql, SiVagrant, SiAnsible, SiJenkins, SiApache, SiKubernetes,
+} from "react-icons/si";
+import Illustration from "../assets/a2.jpg";
+import WorkImage from "../assets/a1.jpg";
 
 export default function About() {
-  const [activePole, setActivePole] = useState("Tous");
+  const [activePole, setActivePole] = useState("Dev Web");
   const techPoles = [
     {
       pole: "Dev Web",
@@ -19,14 +24,16 @@ export default function About() {
         { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
         { name: "PHP", icon: SiPhp, color: "#777BB4" },
         { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38B2AC" },
-      ]
+      ],
     },
     {
       pole: "Mobile",
       emoji: "📱",
       techs: [
         { name: "React Native", icon: SiReact, color: "#61DAFB" },
-      ]
+        { name: "Expo", icon: SiReact, color: "#000020" },
+        { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+      ],
     },
     {
       pole: "Cloud & DevOps",
@@ -35,25 +42,33 @@ export default function About() {
         { name: "AWS", icon: SiAmazon, color: "#FF9900" },
         { name: "Docker", icon: SiDocker, color: "#2496ED" },
         { name: "Git", icon: SiGit, color: "#F05032" },
-      ]
+        { name: "GitLab CI", icon: SiGitlab, color: "#FCA326" },
+        { name: "Vagrant", icon: SiVagrant, color: "#1868F2" },
+        { name: "Ansible", icon: SiAnsible, color: "#EE0000" },
+        { name: "Jenkins", icon: SiJenkins, color: "#D24939" },
+        { name: "JMeter", icon: SiApache, color: "#D22128" },
+        { name: "Kubernetes", icon: SiKubernetes, color: "#336791" },
+      ],
     },
     {
       pole: "Bases de données",
       emoji: "🗄️",
       techs: [
         { name: "MySQL", icon: SiMysql, color: "#00758F" },
+        { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
         { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
         { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-      ]
+      ],
     },
     {
       pole: "Outils & ERP",
       emoji: "🔧",
       techs: [
-        { name: "Odoo", icon: SiGit, color: "#714B67" },
         { name: "WordPress", icon: SiWordpress, color: "#21759B" },
         { name: "Figma", icon: SiFigma, color: "#F24E1E" },
-      ]
+        { name: "Git", icon: SiGit, color: "#F05032" },
+        { name: "GitLab", icon: SiGitlab, color: "#FCA326" },
+      ],
     },
   ];
 
@@ -259,26 +274,24 @@ export default function About() {
             Technologies &amp; Outils
           </h3>
 
-          {/* Boutons filtres */}
+          {/* Boutons filtres (sans 'Tous') */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {["Tous", ...techPoles.map(p => p.pole)].map((label) => (
+            {techPoles.map((p) => (
               <button
-                key={label}
-                onClick={() => setActivePole(label)}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 ${activePole === label
-                    ? "bg-indigo-600 text-white shadow-md"
-                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-indigo-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                key={p.pole}
+                onClick={() => setActivePole(p.pole)}
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 ${activePole === p.pole
+                  ? "bg-indigo-600 text-white shadow-md"
+                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-indigo-300 hover:text-indigo-600 dark:hover:text-indigo-400"
                   }`}
               >
-                {label !== "Tous" && (
-                  <span>{techPoles.find(p => p.pole === label)?.emoji}</span>
-                )}
-                {label}
+                <span>{p.emoji}</span>
+                {p.pole}
               </button>
             ))}
           </div>
 
-          {/* Pills filtrées */}
+          {/* Cards de technos */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activePole}
@@ -286,21 +299,25 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="flex flex-wrap justify-center gap-3"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
             >
-              {(activePole === "Tous"
-                ? techPoles.flatMap(p => p.techs.map(t => ({ ...t, pole: p.pole })))
-                : techPoles.find(p => p.pole === activePole)?.techs.map(t => ({ ...t, pole: activePole })) ?? []
-              ).map((tech, index) => (
+              {(techPoles.find(p => p.pole === activePole)?.techs ?? []).map((tech, index) => (
                 <motion.div
-                  key={`${tech.pole}-${tech.name}-${index}`}
-                  initial={{ opacity: 0, scale: 0.85 }}
+                  key={`${tech.name}-${index}`}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.2, delay: index * 0.03 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 hover:border-indigo-300 dark:hover:border-indigo-500 hover:shadow-sm transition-all duration-200 cursor-default"
+                  transition={{ duration: 0.2, delay: index * 0.05 }}
+                  className="flex flex-col items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-500 hover:shadow-md transition-all duration-200 cursor-default group"
                 >
-                  <tech.icon style={{ color: tech.color }} className="text-base flex-shrink-0" />
-                  <span>{tech.name}</span>
+                  <div
+                    className="flex items-center justify-center w-12 h-12 rounded-xl transition-transform duration-300 group-hover:scale-110"
+                    style={{ backgroundColor: `${tech.color}18` }}
+                  >
+                    <tech.icon style={{ color: tech.color }} className="text-2xl" />
+                  </div>
+                  <span className="text-sm font-semibold text-gray-800 dark:text-gray-200 text-center leading-tight">
+                    {tech.name}
+                  </span>
                 </motion.div>
               ))}
             </motion.div>

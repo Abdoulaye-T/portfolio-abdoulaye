@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Clock, User, MessageSquare, Briefcase, CheckCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { Mail, Phone, MapPin, Send, Clock, User, MessageSquare, Briefcase, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ export default function Contact() {
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,16 +23,33 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
-    // Simulation d'envoi
-    setTimeout(() => {
-      setLoading(false);
+    setError(null);
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone || 'Non renseigné',
+      company: formData.company || 'Non renseignée',
+      sujet: formData.sujet,
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
       setSuccess(true);
       setFormData({ name: '', email: '', phone: '', company: '', sujet: '', message: '' });
-      
-      // Reset success message après 5 secondes
-      setTimeout(() => setSuccess(false), 5000);
-    }, 2000);
+      setTimeout(() => setSuccess(false), 6000);
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setError('Une erreur est survenue lors de l\'envoi. Réessaie ou contacte-moi directement par email.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -98,7 +117,7 @@ export default function Contact() {
             <div>
               <h3 className="text-2xl font-bold mb-6">Restons en contact</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8">
-                Que vous soyez une startup, une PME ou un grand groupe, je m'adapte à vos besoins et votre budget. 
+                Que vous soyez une startup, une PME ou un grand groupe, je m'adapte à vos besoins et votre budget.
                 Parlons de votre vision !
               </p>
             </div>
@@ -164,8 +183,8 @@ export default function Contact() {
             ) : (
               <>
                 <h3 className="text-2xl font-bold mb-6">Démarrons votre projet</h3>
-                
-                <div className="space-y-6">
+
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
@@ -261,6 +280,18 @@ export default function Contact() {
                     />
                   </div>
 
+                  {/* Message d'erreur */}
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-start gap-3 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl text-sm text-red-700 dark:text-red-300"
+                    >
+                      <AlertCircle size={18} className="flex-shrink-0 mt-0.5" />
+                      <p>{error}</p>
+                    </motion.div>
+                  )}
+
                   <motion.button
                     type="submit"
                     disabled={loading}
@@ -280,7 +311,7 @@ export default function Contact() {
                       </>
                     )}
                   </motion.button>
-                </div>
+                </form>
 
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
                   En envoyant ce formulaire, vous acceptez d'être contacté concernant votre demande.
