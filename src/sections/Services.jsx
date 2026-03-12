@@ -37,7 +37,7 @@ const services = [
       { label: 'Authentification & gestion des accès', detail: 'JWT, OAuth2, gestion des rôles et permissions' },
       { label: 'Tests, performances & déploiement', detail: 'CI/CD, monitoring, optimisation des temps de réponse' },
     ],
-    technologies: ['React', 'Angular', 'Laravel', 'Node.js', 'MySQL', 'Tailwind CSS'],
+    technologies: ['React', 'Next.js', 'Angular', 'Laravel', 'Node.js', 'MySQL', 'PostgreSQL', 'MongoDB', 'Firebase', 'Tailwind CSS', 'Bootstrap', 'PHP', 'JavaScript', 'HTML', 'CSS', 'Python'],
   },
   {
     id: 2,
@@ -58,7 +58,7 @@ const services = [
       { label: 'Sécurité & sauvegardes automatisées', detail: 'Firewall, mises à jour gérées, sauvegardes quotidiennes offsite' },
       { label: 'Maintenance & évolutions continues', detail: 'Suivi mensuel, ajout de fonctionnalités, support réactif' },
     ],
-    technologies: ['WordPress', 'PHP', 'Elementor', 'Astra', 'SEO technique'],
+    technologies: ['WordPress', 'PHP', 'Elementor', 'Astra', 'SEO technique', 'Sécurité', 'Sauvegardes automatisées', 'Maintenance', 'Évolutions continues'],
   },
   {
     id: 3,

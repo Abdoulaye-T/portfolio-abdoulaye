@@ -70,7 +70,7 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1530435460869-d13625c69bbf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzl8fHNpdGUlMjB3b3JkcHJlc3MlMjB0ZXh0aWxlfGVufDB8fDB8fHww',
     description: 'Site vitrine pour une  entreprise sociale malienne spécialisée dans la valorisation des déchets textiles à travers l’innovation, la recherche et la production de matériaux écologiques.',
     stack: ['WordPress', "Astra (Parent/Child)", 'Elementor', 'PHP', 'SEO'],
-    link: '#',
+    link: 'https://mistyrose-loris-372094.hostingersite.com/',
     status: 'Développement',
     featured: true
   },
@@ -81,7 +81,7 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1571677246347-5040036b95cc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQzfHx8ZW58MHx8fHx8',
     description: 'Site vitrine pour un Cabinet d\'Expertise Comptable et de Fiscalité au Mali. L\'objectif est de présenter les services offerts par le cabinet, son équipe, ainsi que des ressources utiles pour les clients. Pour améliorer la visibilité en ligne du cabinet et attirer de nouveaux clients.',
     stack: ['WordPress', "Astra (Child)", 'Elementor', 'PHP', 'SEO'],
-    link: '#',
+    link: 'https://gecaf-sasu.miths.tech/',
     status: 'Développement',
     featured: true
   },
@@ -94,6 +94,18 @@ const projects = [
     stack: ['Laravel', 'MySQL', 'Tailwind', 'PHP', 'JavaScript', 'HTML', 'CSS'],
     link: '#',
     github: 'https://github.com/Abdoulaye-T/Blog.git',
+    status: 'Développement',
+    featured: false
+  },
+  {
+    id: 9,
+    title: 'Cabinet médical ESPOIR SARL',
+    category: 'Web',
+    image: 'https://images.unsplash.com/photo-1517134191118-9d595e4c8c2b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8',
+    description: "Application web pour un cabinet médical permettant de gérer les rendez-vous entre les médecins et les patients, rendez-vous en présentiel et en ligne grace à la fonctionnalité de téléconsultation intégrée. Chaque utilisateur à son propre espace qui lui donne accès à ses rendez-vous, ses informations et ses paramètres via un Dashboard sécurisé.",
+    stack: ['Laravel', 'MySQL', 'Tailwind', 'PHP', 'JavaScript', 'HTML', 'CSS'],
+    link: '#',
+    github: 'https://github.com/habiiba7000/Espoir-SARL',
     status: 'Développement',
     featured: false
   },
