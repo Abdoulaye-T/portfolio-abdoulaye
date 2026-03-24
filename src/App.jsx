@@ -1,11 +1,14 @@
+import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
-import About from "./sections/About";
-import Services from "./sections/Services";
-import Portfolio from "./sections/Portfolio";
-import Contact from "./sections/Contact";
-import Footer from "./components/Footer";
-import Education from "./sections/Education";
+
+// Lazy loading des sections non visibles au premier rendu
+const About = lazy(() => import("./sections/About"));
+const Services = lazy(() => import("./sections/Services"));
+const Education = lazy(() => import("./sections/Education"));
+const Portfolio = lazy(() => import("./sections/Portfolio"));
+const Contact = lazy(() => import("./sections/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   return (
@@ -13,13 +16,14 @@ function App() {
       <Navbar />
       <div className="pt-20">
         <Hero />
-        <About />
-        <Services />
-        <Education />
-        {/* <Experience /> */}
-        <Portfolio />
-        <Contact />
-        <Footer />
+        <Suspense fallback={null}>
+          <About />
+          <Services />
+          <Education />
+          <Portfolio />
+          <Contact />
+          <Footer />
+        </Suspense>
       </div>
     </div>
   );

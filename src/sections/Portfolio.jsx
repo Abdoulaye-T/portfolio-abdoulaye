@@ -193,6 +193,9 @@ export default function Portfolio() {
                   <img
                     src={project.image}
                     alt={project.title}
+                    width="600"
+                    height="192"
+                    loading="lazy"
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-3 right-3">
@@ -303,6 +306,9 @@ export default function Portfolio() {
                 <img
                   src={selected.image}
                   alt={selected.title}
+                  width="672"
+                  height="256"
+                  loading="lazy"
                   className="w-full h-64 object-cover"
                 />
 

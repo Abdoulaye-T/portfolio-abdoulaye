@@ -185,7 +185,10 @@ export default function Hero() {
               >
                 <img
                   src={Photo}
-                  alt="Abdoulaye Traoré"
+                  alt="Abdoulaye Traoré - Développeur Full Stack Web & Mobile"
+                  width="384"
+                  height="400"
+                  fetchpriority="high"
                   className="w-full h-full object-cover"
                 />
                 {/* Overlay subtil pour un effet premium */}

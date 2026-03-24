@@ -190,10 +190,9 @@ export default function About() {
             <div className="relative">
               <div className="absolute -left-4 top-0 w-0.5 h-full bg-indigo-400 dark:bg-indigo-600 rounded-full"></div>
               <div className="pl-8">
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                {/* <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                   <span className="text-3xl">👨‍💻</span>
-                  Développeur Web Full Stack au service de solutions utiles et durables
-                </h3>
+                </h3> */}
                 <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Développeur web full stack avec <span className="font-semibold text-blue-600 dark:text-blue-400">plus de 3 ans d'expérience</span>, je conçois et développe
                   des solutions digitales fiables, performantes et orientées utilisateurs.
