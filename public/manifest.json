@@ -1,0 +1,16 @@
+{
+  "name": "Abdoulaye Traoré | Développeur Full Stack",
+  "short_name": "Abdoulaye.dev",
+  "description": "Portfolio professionnel d'Abdoulaye Traoré, Développeur Full Stack Web & Mobile.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#7e22ce",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
