@@ -7,73 +7,54 @@ import {
   SiWordpress, SiMongodb, SiPhp, SiJavascript, SiGitlab,
   SiPostgresql, SiVagrant, SiAnsible, SiJenkins, SiApache, SiKubernetes,
 } from "react-icons/si";
+import { useLanguage } from "../i18n/LanguageContext";
 import Illustration from "../assets/a2.jpg";
 import WorkImage from "../assets/a1.jpg";
 
-const techPoles = [
-  {
-    pole: "Dev Web",
-    techs: [
-      { name: "React", icon: SiReact },
-      { name: "Angular", icon: SiAngular },
-      { name: "Laravel", icon: SiLaravel },
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "PHP", icon: SiPhp },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-    ],
-  },
-  {
-    pole: "Mobile",
-    techs: [
-      { name: "React Native", icon: SiReact },
-      { name: "Expo", icon: SiReact },
-      { name: "Firebase", icon: SiFirebase },
-    ],
-  },
-  {
-    pole: "Cloud & DevOps",
-    techs: [
-      { name: "AWS", icon: SiAmazon },
-      { name: "Docker", icon: SiDocker },
-      { name: "Git", icon: SiGit },
-      { name: "GitLab CI", icon: SiGitlab },
-      { name: "Vagrant", icon: SiVagrant },
-      { name: "Ansible", icon: SiAnsible },
-      { name: "Jenkins", icon: SiJenkins },
-      { name: "JMeter", icon: SiApache },
-      { name: "Kubernetes", icon: SiKubernetes },
-    ],
-  },
-  {
-    pole: "Bases de données",
-    techs: [
-      { name: "MySQL", icon: SiMysql },
-      { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "MongoDB", icon: SiMongodb },
-      { name: "Firebase", icon: SiFirebase },
-    ],
-  },
-  {
-    pole: "Outils & ERP",
-    techs: [
-      { name: "WordPress", icon: SiWordpress },
-      { name: "Figma", icon: SiFigma },
-      { name: "Git", icon: SiGit },
-      { name: "GitLab", icon: SiGitlab },
-    ],
-  },
-];
-
-const highlights = [
-  { title: "Code de qualité", description: "Solutions robustes et bien structurées" },
-  { title: "Solutions créatives", description: "Approches innovantes pour chaque défi" },
-  { title: "Performance optimale", description: "Applications rapides et fiables" },
-  { title: "Passion du code", description: "Créer avec enthousiasme et précision" },
-];
+const techByPole = {
+  dev: [
+    { name: "React", icon: SiReact },
+    { name: "Angular", icon: SiAngular },
+    { name: "Laravel", icon: SiLaravel },
+    { name: "Node.js", icon: SiNodedotjs },
+    { name: "JavaScript", icon: SiJavascript },
+    { name: "PHP", icon: SiPhp },
+    { name: "Tailwind CSS", icon: SiTailwindcss },
+  ],
+  mobile: [
+    { name: "React Native", icon: SiReact },
+    { name: "Expo", icon: SiReact },
+    { name: "Firebase", icon: SiFirebase },
+  ],
+  devops: [
+    { name: "AWS", icon: SiAmazon },
+    { name: "Docker", icon: SiDocker },
+    { name: "Git", icon: SiGit },
+    { name: "GitLab CI", icon: SiGitlab },
+    { name: "Vagrant", icon: SiVagrant },
+    { name: "Ansible", icon: SiAnsible },
+    { name: "Jenkins", icon: SiJenkins },
+    { name: "JMeter", icon: SiApache },
+    { name: "Kubernetes", icon: SiKubernetes },
+  ],
+  db: [
+    { name: "MySQL", icon: SiMysql },
+    { name: "PostgreSQL", icon: SiPostgresql },
+    { name: "MongoDB", icon: SiMongodb },
+    { name: "Firebase", icon: SiFirebase },
+  ],
+  tools: [
+    { name: "WordPress", icon: SiWordpress },
+    { name: "Figma", icon: SiFigma },
+    { name: "Git", icon: SiGit },
+    { name: "GitLab", icon: SiGitlab },
+  ],
+};
 
 export default function About() {
-  const [activePole, setActivePole] = useState("Dev Web");
+  const { t } = useLanguage();
+  const { eyebrow, titleBefore, titleHighlight, titleAfter, paragraphs, quote, highlights, techEyebrow, techPoles, ctaTitle, ctaButton } = t.about;
+  const [activePole, setActivePole] = useState(techPoles[0].key);
 
   return (
     <section id="about" className="relative py-28 bg-bg text-ink overflow-hidden">
@@ -87,9 +68,9 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <span className="eyebrow">02 — À propos</span>
+          <span className="eyebrow">{eyebrow}</span>
           <h2 className="mt-5 font-serif text-4xl md:text-6xl font-medium leading-tight max-w-3xl">
-            Construire des produits qui <span className="italic text-gold">durent</span>, pas seulement des démos.
+            {titleBefore}<span className="italic text-gold">{titleHighlight}</span>{titleAfter}
           </h2>
         </motion.div>
 
@@ -130,7 +111,7 @@ export default function About() {
                 className="w-11 h-11 flex items-center justify-center border border-line rounded-full text-ink hover:border-gold hover:text-gold transition-colors duration-200"
                 aria-label="GitHub"
               >
-                <Github className="w-4.5 h-4.5" size={18} />
+                <Github size={18} />
               </a>
               <a
                 href="https://www.linkedin.com/in/abdoulaye-traore-73928924a/"
@@ -146,25 +127,19 @@ export default function About() {
 
           {/* Texte */}
           <div className="lg:col-span-8 order-1 lg:order-2 space-y-8">
-            <p className="text-lg sm:text-xl leading-relaxed text-muted">
-              <span className="font-serif text-3xl float-left mr-3 mt-1 text-ink leading-none">D</span>
-              éveloppeur web full stack avec <span className="text-ink font-medium">plus de 3 ans d'expérience</span>, je
-              conçois et développe des solutions digitales fiables, performantes et orientées utilisateurs.
-              J'interviens sur l'ensemble du cycle de vie des projets : <span className="text-ink font-medium">conception,
-              développement, intégration et mise en production.</span>
-            </p>
-            <p className="text-lg sm:text-xl leading-relaxed text-muted">
-              Mon parcours m'a amené à travailler sur des <span className="text-ink font-medium">applications web</span>,
-              des <span className="text-ink font-medium">sites professionnels</span>, des <span className="text-ink font-medium">solutions
-              WordPress avancées</span> et des <span className="text-ink font-medium">modules ERP Odoo sur mesure</span>,
-              avec une attention constante portée à la qualité du code, à la sécurité et à la scalabilité.
-            </p>
+            {paragraphs.map((p, i) => (
+              <p key={i} className="text-lg sm:text-xl leading-relaxed text-muted">
+                {i === 0 && (
+                  <span className="font-serif text-3xl float-left mr-3 mt-1 text-ink leading-none">
+                    {p.charAt(0)}
+                  </span>
+                )}
+                {i === 0 ? p.slice(1) : p}
+              </p>
+            ))}
 
             <div className="border-l-2 border-gold pl-6 py-1">
-              <p className="text-lg italic text-ink/90 font-serif">
-                « Du prototype à la production, j'accompagne mes clients et partenaires pour construire des
-                solutions solides, claires et pérennes. »
-              </p>
+              <p className="text-lg italic text-ink/90 font-serif">« {quote} »</p>
             </div>
           </div>
         </motion.div>
@@ -197,18 +172,18 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="mb-24"
         >
-          <span className="eyebrow">Technologies &amp; outils</span>
+          <span className="eyebrow">{techEyebrow}</span>
 
           <div className="flex flex-wrap gap-x-6 gap-y-3 mt-6 mb-10 border-b border-line pb-6">
             {techPoles.map((p) => (
               <button
-                key={p.pole}
-                onClick={() => setActivePole(p.pole)}
+                key={p.key}
+                onClick={() => setActivePole(p.key)}
                 className={`font-mono text-sm uppercase tracking-wide transition-colors duration-200 ${
-                  activePole === p.pole ? "text-gold" : "text-muted hover:text-ink"
+                  activePole === p.key ? "text-gold" : "text-muted hover:text-ink"
                 }`}
               >
-                {p.pole}
+                {p.label}
               </button>
             ))}
           </div>
@@ -222,7 +197,7 @@ export default function About() {
               transition={{ duration: 0.25 }}
               className="flex flex-wrap gap-3"
             >
-              {(techPoles.find((p) => p.pole === activePole)?.techs ?? []).map((tech, index) => (
+              {(techByPole[activePole] ?? []).map((tech, index) => (
                 <div
                   key={`${tech.name}-${index}`}
                   className="flex items-center gap-2.5 px-4 py-2.5 border border-line rounded-full text-ink/80 hover:border-gold hover:text-gold transition-colors duration-200"
@@ -243,14 +218,12 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="border border-line p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
         >
-          <h3 className="font-serif text-3xl md:text-4xl max-w-md">
-            Un projet à réaliser ?
-          </h3>
+          <h3 className="font-serif text-3xl md:text-4xl max-w-md">{ctaTitle}</h3>
           <a
             href="#contact"
             className="group inline-flex items-center gap-3 px-7 py-3.5 bg-gold text-bg rounded-full font-semibold shrink-0 hover:shadow-lg hover:shadow-gold/20 transition-shadow duration-300"
           >
-            Démarrer le projet
+            {ctaButton}
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
           </a>
         </motion.div>

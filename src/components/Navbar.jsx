@@ -1,22 +1,15 @@
 import { Link } from "react-scroll";
 import { useState, useEffect, useCallback } from "react";
 import useTheme from '../hooks/useTheme';
+import { useLanguage } from '../i18n/LanguageContext';
 import { Menu, X, Sun, Moon, ArrowDownToLine } from "lucide-react";
-
-const links = [
-  { id: "01", name: "Accueil", to: "home" },
-  { id: "02", name: "À propos", to: "about" },
-  { id: "03", name: "Services", to: "services" },
-  { id: "04", name: "Parcours", to: "education" },
-  { id: "05", name: "Projets", to: "portfolio" },
-  { id: "06", name: "Contact", to: "contact" },
-];
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useTheme();
+  const { lang, toggleLang, t } = useLanguage();
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 40);
@@ -50,6 +43,8 @@ export default function Navbar() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [nav, closeMenu]);
 
+  const links = t.nav.links;
+
   return (
     <>
       <nav
@@ -79,7 +74,7 @@ export default function Navbar() {
 
           {/* Navigation desktop */}
           <ul className="hidden lg:flex items-center gap-1" role="menubar">
-            {links.map(({ id, name, to }) => (
+            {links.map(({ id, label, to }) => (
               <li key={id} role="none">
                 <Link
                   to={to}
@@ -96,7 +91,7 @@ export default function Navbar() {
                   <span className={`font-mono text-[11px] transition-colors duration-200 ${activeSection === to ? 'text-gold' : 'text-muted/60 group-hover:text-gold'}`}>
                     {id}
                   </span>
-                  {name}
+                  {label}
                 </Link>
               </li>
             ))}
@@ -104,21 +99,30 @@ export default function Navbar() {
 
           {/* Contrôles à droite */}
           <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={toggleLang}
+              className="p-2.5 rounded-full text-ink hover:text-gold hover:bg-surface2 transition-colors duration-300 font-mono text-xs font-semibold w-9 h-9 flex items-center justify-center"
+              title={lang === 'fr' ? 'Switch to English' : 'Passer en français'}
+              aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}
+            >
+              {lang === 'fr' ? 'EN' : 'FR'}
+            </button>
+
             <a
               href="/Abdoulaye_Traoré_CV_développeur_Fullstack.pdf"
               download
               className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-line text-ink text-sm font-medium hover:border-gold hover:text-gold transition-colors duration-300"
-              aria-label="Télécharger mon CV"
+              aria-label={t.nav.downloadCv}
             >
               <ArrowDownToLine size={14} />
-              <span>CV</span>
+              <span>{t.nav.cv}</span>
             </a>
 
             <button
               onClick={toggleTheme}
               className="p-2.5 rounded-full text-ink hover:text-gold hover:bg-surface2 transition-colors duration-300"
-              title={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
-              aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
+              title={theme === 'dark' ? t.nav.themeLight : t.nav.themeDark}
+              aria-label={theme === 'dark' ? t.nav.themeLight : t.nav.themeDark}
             >
               {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
             </button>
@@ -148,7 +152,7 @@ export default function Navbar() {
       >
         <div className="flex flex-col h-full px-8 pt-28 pb-10">
           <ul className="flex-1 flex flex-col justify-center gap-2" role="menu">
-            {links.map(({ id, name, to }, index) => (
+            {links.map(({ id, label, to }, index) => (
               <li key={id} role="none">
                 <Link
                   to={to}
@@ -164,7 +168,7 @@ export default function Navbar() {
                 >
                   <span className="font-mono text-sm text-gold">{id}</span>
                   <span className="font-serif text-3xl text-ink group-hover:text-gold transition-colors duration-200">
-                    {name}
+                    {label}
                   </span>
                 </Link>
               </li>
@@ -179,11 +183,14 @@ export default function Navbar() {
               className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-line text-ink text-sm font-medium hover:border-gold hover:text-gold transition-colors duration-300"
             >
               <ArrowDownToLine size={14} />
-              Télécharger CV
+              {t.nav.downloadCv}
             </a>
-            <span className="font-mono text-xs text-muted">
-              {theme === 'dark' ? 'mode sombre' : 'mode clair'}
-            </span>
+            <button
+              onClick={toggleLang}
+              className="font-mono text-xs text-muted hover:text-gold transition-colors duration-200"
+            >
+              {lang === 'fr' ? 'EN' : 'FR'}
+            </button>
           </div>
         </div>
       </div>

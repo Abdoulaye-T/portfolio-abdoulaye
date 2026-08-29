@@ -1,97 +1,20 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle } from "lucide-react";
-
-const educations = [
-  {
-    title: "Certification Hedera Developer",
-    school: "Hedera & Orange Digital Center Mali",
-    date: "2025",
-    description: "Formation intensive sur l'écosystème Hedera avec focus sur l'architecture Hashgraph, les Smart Contracts, et les applications décentralisées. Déployé une application décentralisée pour un client fictif avec Hedera et Hashgraph. Certification Hedera obtenue.",
-    tags: ["Hedera", "Hashgraph", "Smart Contracts", "dApps", "Tokenization", "Web3"],
-    level: "Certifié Hedera",
-  },
-  {
-    title: "Formation AWS re/Start – Cloud Computing",
-    school: "Amazon Web Services & Orange Digital Center Mali",
-    date: "2024",
-    description: "Formation intensive sur l'écosystème AWS avec focus sur l'architecture cloud moderne, la sécurité, et l'automatisation. Déployé une application serverless pour un client fictif avec Lambda et S3. Certification AWS obtenue avec mention.",
-    tags: ["AWS", "EC2", "S3", "VPC", "IAM", "Lambda", "CloudFormation"],
-    level: "Certifié AWS",
-  },
-  {
-    title: "BAC+3 Génie Logiciel et Développement Web",
-    school: "Technolab-ISTA",
-    date: "2021 – 2024",
-    description: "Formation complète en développement full-stack avec spécialisation mobile. Projet de fin d'études : E-Uamsat, plateforme de gestion académique déployée en production avec 500+ utilisateurs actifs.",
-    tags: ["JavaScript", "Java EE", "Node.js", "PHP", "Laravel", "React Native", "SQL", "UML", "Merise"],
-    level: "Diplômé",
-  },
-  {
-    title: "Meta Certified Frontend Developer",
-    school: "Meta via Coursera",
-    date: "2024",
-    description: "Certification officielle Meta couvrant React avancé, JavaScript ES6+, principes UX/UI, et bonnes pratiques. Développé une interface React interactive avec tests unitaires Jest pour un projet client.",
-    tags: ["React", "UI/UX", "Testing", "Jest", "Figma"],
-    level: "Certifié Meta",
-  },
-  {
-    title: "CISCO IT Essentials",
-    school: "Cisco Networking Academy",
-    date: "2023",
-    description: "Certification CISCO sur les fondamentaux IT, administration réseau, et dépannage hardware. Déployé un réseau local pour une PME avec configuration de pare-feu et diagnostics matériels.",
-    tags: ["Réseaux", "Hardware", "Troubleshooting", "Sécurité"],
-    level: "Certifié CISCO",
-  },
-];
-
-const experiences = [
-  {
-    title: "Stagiaire Développeur Web & Mobile",
-    school: "Miths - Agence digitale Franco-Malienne",
-    date: "2025 – présent",
-    description: "Développement de E-Uamsat, plateforme SaaS de gestion académique. Conception d'une architecture scalable, développement d'API RESTful sécurisées, et création d'interfaces utilisateur modernes.",
-    tags: ["Laravel", "MySQL", "API REST", "Bootstrap", "Git"],
-    achievements: [
-      "500+ utilisateurs actifs quotidiens",
-      "Architecture scalable implémentée",
-      "Réduction de 80% du temps de gestion",
-      "Interface multilingue (FR/EN)",
-    ],
-  },
-  {
-    title: "Développeur Full-Stack",
-    school: "Technolab-ISTA",
-    date: "Fév. – Juin 2024",
-    description: "Développement de E-Uamsat, plateforme SaaS de gestion académique. Conception d'une architecture scalable, développement d'API RESTful sécurisées, et création d'interfaces utilisateur modernes.",
-    tags: ["Laravel", "MySQL", "API REST", "Bootstrap", "Git"],
-    achievements: [
-      "500+ utilisateurs actifs quotidiens",
-      "Architecture scalable implémentée",
-      "Réduction de 80% du temps de gestion",
-      "Interface multilingue (FR/EN)",
-    ],
-  },
-  {
-    title: "Apprenant Cloud",
-    school: "Programme AWS re/Start",
-    date: "Mai – Août 2024",
-    description: "Développement de solutions cloud sur AWS. Automatisation d'infrastructures avec CloudFormation, mise en place de pipelines CI/CD, et optimisation des coûts cloud.",
-    tags: ["AWS", "CloudFormation", "EC2", "S3", "Lambda", "DevOps", "Python"],
-    achievements: [
-      "5 architectures cloud déployées",
-      "Automatisation complète des déploiements",
-      "Réduction de 40% des coûts infrastructure",
-      "Monitoring et alertes configurés",
-    ],
-  },
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Education() {
+  const { t } = useLanguage();
+  const {
+    eyebrow, titleBefore, titleHighlight, titleAfter,
+    tabEducation, tabExperience, achievementsLabel, technologiesLabel,
+    educationItems, experienceItems,
+  } = t.education;
+
   const [activeTab, setActiveTab] = useState("education");
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const currentData = activeTab === "education" ? educations : experiences;
+  const currentData = activeTab === "education" ? educationItems : experienceItems;
 
   return (
     <section id="education" className="relative py-28 bg-bg text-ink overflow-hidden">
@@ -105,16 +28,16 @@ export default function Education() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="eyebrow">04 — Parcours</span>
+            <span className="eyebrow">{eyebrow}</span>
             <h2 className="mt-5 font-serif text-4xl md:text-6xl font-medium leading-tight max-w-2xl">
-              Une trajectoire tournée vers l'<span className="italic text-gold">excellence</span>.
+              {titleBefore}<span className="italic text-gold">{titleHighlight}</span>{titleAfter}
             </h2>
           </motion.div>
 
           <div className="flex gap-8 border-b border-line md:border-0 pb-2 md:pb-0">
             {[
-              { key: "education", label: "Formations" },
-              { key: "experience", label: "Expériences" },
+              { key: "education", label: tabEducation },
+              { key: "experience", label: tabExperience },
             ].map((tab) => (
               <button
                 key={tab.key}
@@ -207,7 +130,7 @@ export default function Education() {
               {selectedItem.achievements && (
                 <div className="mb-8">
                   <p className="font-mono text-[11px] uppercase tracking-widest2 text-muted mb-4">
-                    Réalisations
+                    {achievementsLabel}
                   </p>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {selectedItem.achievements.map((achievement, idx) => (
@@ -222,7 +145,7 @@ export default function Education() {
 
               <div>
                 <p className="font-mono text-[11px] uppercase tracking-widest2 text-muted mb-4">
-                  Technologies
+                  {technologiesLabel}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {selectedItem.tags.map((tag, idx) => (
