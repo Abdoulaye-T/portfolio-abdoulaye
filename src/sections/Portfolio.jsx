@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Eye, Filter } from 'lucide-react';
+import { ExternalLink, Github, X } from 'lucide-react';
 
 const projects = [
   {
@@ -8,7 +8,7 @@ const projects = [
     title: 'Solid\'Avenir',
     category: 'Web',
     image: 'https://images.unsplash.com/photo-1559028006-448665bd7c7f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YXBwJTIwd2VifGVufDB8fDB8fHww',
-    description: `Conception et développement d’une plateforme de financement participatif basée sur Hedera Hashgraph, permettant des dons transparents, traçables et sécurisés pour 
+    description: `Conception et développement d’une plateforme de financement participatif basée sur Hedera Hashgraph, permettant des dons transparents, traçables et sécurisés pour
     des projets sociaux et environnementaux. La solution intègre la gestion des utilisateurs, des transactions et le suivi d’impact en temps réel.`,
     stack: ["Web3", 'Python', 'Django', 'SQlite', 'Node.js', 'JavaScript', 'HTML', 'CSS', 'Hedera Hashgraph', 'Hedera Consensus Service', 'Hedera Token Service', 'Smart Contracts'],
     link: 'https://solidavenir.com/',
@@ -124,138 +124,114 @@ export default function Portfolio() {
 
   const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 6);
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Production': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-      case 'Développement': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200';
-    }
-  };
-
   return (
-    <section id="portfolio" className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="portfolio" className="relative py-28 bg-bg text-ink overflow-hidden">
+      <div className="max-w-editorial mx-auto px-6 lg:px-10">
+
         {/* En-tête */}
-        <div className="text-center mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Mes <span className="text-blue-600">Réalisations</span>
+            <span className="eyebrow">05 — Projets</span>
+            <h2 className="mt-5 font-serif text-4xl md:text-6xl font-medium leading-tight max-w-2xl">
+              Une sélection de mes <span className="italic text-gold">réalisations</span>.
             </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Découvrez une sélection de projets que j'ai développés, alliant expertise technique et vision business.
-            </p>
           </motion.div>
-        </div>
 
-        {/* Filtres */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mr-4">
-            <Filter size={16} />
-            <span>Filtrer par :</span>
-          </div>
-          {categories.map((cat, i) => (
-            <motion.button
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setFilter(cat)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${filter === cat
-                  ? 'bg-indigo-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-indigo-300 hover:text-indigo-600'
+          <div className="flex flex-wrap gap-6">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => { setFilter(cat); setShowAll(false); }}
+                className={`font-mono text-sm uppercase tracking-wide pb-1 border-b-2 transition-colors duration-200 ${
+                  filter === cat
+                    ? 'text-gold border-gold'
+                    : 'text-muted border-transparent hover:text-ink'
                 }`}
-            >
-              {cat}
-            </motion.button>
-          ))}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Grille projets */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3 border border-line">
           <AnimatePresence mode="popLayout">
             {displayedProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 ${project.featured ? 'ring-2 ring-blue-100 dark:ring-blue-900' : ''
-                  }`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.04 }}
+                className="group bg-bg flex flex-col"
               >
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden aspect-[3/2]">
                   <img
                     src={project.image}
                     alt={project.title}
                     width="600"
-                    height="192"
+                    height="400"
                     loading="lazy"
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                   />
-                  <div className="absolute top-3 right-3">
-                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(project.status)}`}>
+                  <div className="absolute top-3 left-3 flex gap-2">
+                    <span className="px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide bg-bg/90 text-ink border border-line">
                       {project.status}
                     </span>
-                  </div>
-                  {project.featured && (
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-yellow-400 text-yellow-900 px-2 py-1 text-xs font-bold rounded-full">
-                        ⭐ Featured
+                    {project.featured && (
+                      <span className="px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide bg-gold text-bg">
+                        Featured
                       </span>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
 
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-bold group-hover:text-blue-600 transition-colors">
+                <div className="p-6 flex-1 flex flex-col">
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h3 className="font-serif text-xl text-ink group-hover:text-gold transition-colors duration-200">
                       {project.title}
                     </h3>
-                    <span className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded">
+                    <span className="font-mono text-[10px] uppercase text-muted shrink-0 mt-1.5">
                       {project.category}
                     </span>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+                  <p className="text-sm text-muted mb-5 line-clamp-3 flex-1">
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-5">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.stack.slice(0, 3).map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-xs bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full font-medium"
-                      >
+                      <span key={i} className="text-xs border border-line rounded-full px-3 py-1 text-ink/70">
                         {tech}
                       </span>
                     ))}
                     {project.stack.length > 3 && (
-                      <span className="text-xs text-gray-500 dark:text-gray-400">
-                        +{project.stack.length - 3}
-                      </span>
+                      <span className="text-xs text-muted px-1 py-1">+{project.stack.length - 3}</span>
                     )}
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex items-center gap-4 mt-auto pt-4 border-t border-line">
                     <button
                       onClick={() => setSelected(project)}
-                      className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+                      className="text-sm font-semibold text-ink hover:text-gold transition-colors duration-200"
                     >
-                      <Eye size={16} />
-                      Détails
+                      Voir le détail →
                     </button>
                     {project.github && (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
+                        className="ml-auto text-muted hover:text-gold transition-colors duration-200"
+                        aria-label="Code source"
                       >
                         <Github size={16} />
                       </a>
@@ -267,112 +243,104 @@ export default function Portfolio() {
           </AnimatePresence>
         </div>
 
-        {/* Bouton Voir plus */}
         {!showAll && filteredProjects.length > 6 && (
-          <div className="text-center mt-12">
+          <div className="text-center mt-14">
             <button
               onClick={() => setShowAll(true)}
-              className="bg-white dark:bg-gray-800 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white py-3 px-8 rounded-full font-semibold transition-all duration-300"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-line rounded-full font-semibold text-ink hover:border-gold hover:text-gold transition-colors duration-300"
             >
               Voir tous les projets ({filteredProjects.length - 6} de plus)
             </button>
           </div>
         )}
+      </div>
 
-        {/* Modal */}
-        <AnimatePresence>
-          {selected && (
+      {/* Modal */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-ink/40 backdrop-blur-sm flex justify-center items-center z-50 p-4"
+            onClick={() => setSelected(null)}
+          >
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-50 p-4"
-              onClick={() => setSelected(null)}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 16 }}
+              className="bg-bg border border-line max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+              onClick={(e) => e.stopPropagation()}
             >
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
-                onClick={(e) => e.stopPropagation()}
+              <button
+                className="absolute top-5 right-5 text-muted hover:text-gold transition-colors z-10"
+                onClick={() => setSelected(null)}
+                aria-label="Fermer"
               >
-                <button
-                  className="absolute top-4 right-4 w-8 h-8 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors z-10"
-                  onClick={() => setSelected(null)}
-                >
-                  ×
-                </button>
+                <X size={22} />
+              </button>
 
-                <img
-                  src={selected.image}
-                  alt={selected.title}
-                  width="672"
-                  height="256"
-                  loading="lazy"
-                  className="w-full h-64 object-cover"
-                />
+              <img
+                src={selected.image}
+                alt={selected.title}
+                width="672"
+                height="256"
+                loading="lazy"
+                className="w-full h-64 object-cover grayscale-[10%]"
+              />
 
-                <div className="p-8">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-2">{selected.title}</h3>
-                      <div className="flex items-center gap-3">
-                        <span className="text-sm bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
-                          {selected.category}
-                        </span>
-                        <span className={`text-sm px-3 py-1 rounded-full ${getStatusColor(selected.status)}`}>
-                          {selected.status}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+              <div className="p-8 sm:p-10">
+                <div className="flex items-center gap-3 mb-4 font-mono text-[11px] uppercase tracking-widest2 text-muted">
+                  <span>{selected.category}</span>
+                  <span className="text-line">•</span>
+                  <span className="text-gold">{selected.status}</span>
+                </div>
+                <h3 className="font-serif text-3xl mb-6 text-ink">{selected.title}</h3>
 
-                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                    {selected.description}
+                <p className="text-muted mb-8 leading-relaxed">
+                  {selected.description}
+                </p>
+
+                <div className="mb-8">
+                  <p className="font-mono text-[11px] uppercase tracking-widest2 text-muted mb-4">
+                    Technologies utilisées
                   </p>
-
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-3">Technologies utilisées :</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selected.stack.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-2 rounded-lg text-sm font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4">
-                    <a
-                      href={selected.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-lg font-medium transition-colors"
-                    >
-                      <ExternalLink size={18} />
-                      Voir le projet
-                    </a>
-                    {selected.github && (
-                      <a
-                        href={selected.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-3 px-6 rounded-lg font-medium transition-colors"
-                      >
-                        <Github size={18} />
-                        Code source
-                      </a>
-                    )}
+                  <div className="flex flex-wrap gap-2">
+                    {selected.stack.map((tech, i) => (
+                      <span key={i} className="border border-line rounded-full px-3 py-1.5 text-xs text-ink/80">
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </motion.div>
+
+                <div className="flex gap-4">
+                  <a
+                    href={selected.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 bg-gold text-bg py-3.5 px-6 rounded-full font-semibold hover:shadow-lg hover:shadow-gold/20 transition-shadow duration-300"
+                  >
+                    <ExternalLink size={16} />
+                    Voir le projet
+                  </a>
+                  {selected.github && (
+                    <a
+                      href={selected.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 border border-line rounded-full text-ink py-3.5 px-6 font-semibold hover:border-gold hover:text-gold transition-colors duration-300"
+                    >
+                      <Github size={16} />
+                      Code source
+                    </a>
+                  )}
+                </div>
+              </div>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -2,6 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Design tokens ───────────────────────────────────────────────
+   Direction "Éditorial Noir" : noir profond légèrement chaud,
+   accent or doux (assurance + confiance + douceur), typographie
+   éditoriale (Fraunces) + mono (JetBrains Mono) pour les repères.
+   Valeurs en "R G B" (sans virgules) pour fonctionner avec
+   rgb(var(--x) / <alpha-value>) et permettre l'opacité Tailwind. */
+
+:root {
+  --bg: 250 247 242;         /* #FAF7F2 papier chaud */
+  --surface: 255 255 255;    /* blanc */
+  --surface-2: 243 239 231;  /* #F3EFE7 */
+  --line: 226 220 208;       /* #E2DCD0 */
+  --ink: 23 20 15;           /* #17140F encre chaude */
+  --muted: 107 102 95;       /* #6B665F */
+  --accent: 168 117 43;      /* #A8752B or profond (contraste sur clair) */
+  --accent-soft: 168 117 43;
+}
+
+.dark {
+  --bg: 11 11 12;            /* #0B0B0C noir chaud */
+  --surface: 19 19 21;       /* #131315 */
+  --surface-2: 27 27 30;     /* #1B1B1E */
+  --line: 40 39 42;          /* #28272A */
+  --ink: 242 238 229;        /* #F2EEE5 blanc chaud */
+  --muted: 156 153 149;      /* #9C9995 */
+  --accent: 217 178 107;     /* #D9B26B or clair (contraste sur sombre) */
+  --accent-soft: 217 178 107;
+}
+
 html {
+  scroll-behavior: smooth;
   transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--ink));
+}
+
+::selection {
+  background-color: rgb(var(--accent) / 0.35);
+  color: rgb(var(--ink));
+}
+
+/* Scrollbar discrète, cohérente avec l'identité */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--line));
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent) / 0.5);
+}
+
+/* Repère mono numéroté utilisé dans les en-têtes de section */
+.eyebrow {
+  font-family: '"JetBrains Mono"', ui-monospace, monospace;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgb(var(--accent));
 }

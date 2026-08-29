@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { Mail, Phone, MapPin, Send, Clock, User, MessageSquare, Briefcase, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,7 +16,6 @@ export default function Contact() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
 
-  // Initialiser EmailJS avec la clé publique (API v4+)
   useEffect(() => {
     emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   }, []);
@@ -68,7 +67,7 @@ export default function Contact() {
       icon: Phone,
       label: 'Téléphone',
       value: '+223 92 35 31 20',
-      subtitle: 'Lun-Ven 9h-18h',
+      subtitle: 'Lun–Ven, 9h–18h',
       href: 'tel:+22392353129'
     },
     {
@@ -81,83 +80,76 @@ export default function Contact() {
   ];
 
   const subjects = [
-    { value: 'freelance', label: 'Mission freelance', icon: Briefcase },
-    { value: 'emploi', label: 'Opportunité d\'emploi', icon: User },
-    { value: 'partenariat', label: 'Partenariat / Collaboration', icon: MessageSquare },
-    { value: 'conseil', label: 'Conseil technique', icon: CheckCircle },
-    { value: 'autre', label: 'Autre demande', icon: Mail }
+    { value: 'freelance', label: 'Mission freelance' },
+    { value: 'emploi', label: "Opportunité d'emploi" },
+    { value: 'partenariat', label: 'Partenariat / Collaboration' },
+    { value: 'conseil', label: 'Conseil technique' },
+    { value: 'autre', label: 'Autre demande' }
   ];
 
-  return (
-    <section id="contact" className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* En-tête */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Travaillons <span className="text-blue-600">Ensemble</span>
-            </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Prêt à donner vie à votre projet ? Discutons de vos besoins et trouvons la solution idéale.
-            </p>
-          </motion.div>
-        </div>
+  const faqs = [
+    { q: "Quel est votre délai de réponse ?", a: "Je réponds à tous les messages sous 24h maximum, souvent plus rapidement." },
+    { q: "Proposez-vous des devis gratuits ?", a: "Oui, l'étude de votre projet et le devis détaillé sont entièrement gratuits." },
+    { q: "Travaillez-vous à distance ?", a: "Absolument ! Je collabore avec des clients partout dans le monde." },
+  ];
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Informations de contact */}
+  const inputClasses = "w-full bg-transparent border-0 border-b border-line py-3 text-ink placeholder:text-muted/60 focus:outline-none focus:border-gold transition-colors duration-200";
+
+  return (
+    <section id="contact" className="relative py-28 bg-bg text-ink overflow-hidden">
+      <div className="max-w-editorial mx-auto px-6 lg:px-10">
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <span className="eyebrow">06 — Contact</span>
+          <h2 className="mt-5 font-serif text-4xl md:text-6xl font-medium leading-tight max-w-2xl">
+            Travaillons <span className="italic text-gold">ensemble</span>.
+          </h2>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-12 gap-16">
+          {/* Informations */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="lg:col-span-5 space-y-10"
           >
-            <div>
-              <h3 className="text-2xl font-bold mb-6">Restons en contact</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
-                Que vous soyez une startup, une PME ou un grand groupe, je m'adapte à vos besoins et votre budget.
-                Parlons de votre vision !
-              </p>
-            </div>
+            <p className="text-muted leading-relaxed">
+              Que vous soyez une startup, une PME ou un grand groupe, je m'adapte à vos
+              besoins et votre budget. Parlons de votre vision.
+            </p>
 
-            <div className="space-y-6">
+            <div className="space-y-6 border-t border-line pt-8">
               {contactInfo.map((info, index) => (
-                <motion.a
+                <a
                   key={index}
                   href={info.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 dark:border-gray-700 group"
+                  className="flex items-center gap-4 group"
                 >
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors mr-4">
-                    <info.icon size={20} />
+                  <div className="w-11 h-11 shrink-0 flex items-center justify-center border border-line rounded-full text-ink group-hover:border-gold group-hover:text-gold transition-colors duration-200">
+                    <info.icon size={17} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-gray-100">{info.label}</h4>
-                    <p className="text-blue-600 dark:text-blue-400 font-medium">{info.value}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{info.subtitle}</p>
+                    <p className="font-mono text-[11px] uppercase tracking-widest2 text-muted">{info.label}</p>
+                    <p className="text-ink font-medium group-hover:text-gold transition-colors duration-200">{info.value}</p>
+                    <p className="text-xs text-muted">{info.subtitle}</p>
                   </div>
-                </motion.a>
+                </a>
               ))}
             </div>
 
-            {/* Disponibilité */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-200 dark:border-blue-800">
-              <div className="flex items-center gap-3 mb-3">
-                <Clock className="text-blue-600" size={20} />
-                <h4 className="font-semibold text-blue-900 dark:text-blue-100">Disponibilité actuelle</h4>
-              </div>
-              <p className="text-blue-800 dark:text-blue-200 text-sm">
-                <span className="inline-block w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                Disponible pour nouveaux projets • Réponse garantie sous 24h
+            <div className="flex items-center gap-3 border border-line p-5">
+              <Clock className="text-gold shrink-0" size={18} />
+              <p className="text-sm text-muted">
+                <span className="inline-block w-2 h-2 bg-gold rounded-full mr-2 align-middle" />
+                Disponible pour nouveaux projets — réponse garantie sous 24h
               </p>
             </div>
           </motion.div>
@@ -168,190 +160,132 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700"
+            className="lg:col-span-7"
           >
             {success ? (
-              <div className="text-center py-8">
+              <div className="text-center py-16 border border-line">
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                  className="w-16 h-16 border border-gold rounded-full flex items-center justify-center mx-auto mb-5"
                 >
-                  <CheckCircle className="text-green-600" size={32} />
+                  <CheckCircle className="text-gold" size={28} />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-green-600 mb-2">Message envoyé !</h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <h3 className="font-serif text-2xl text-ink mb-2">Message envoyé !</h3>
+                <p className="text-muted">
                   Merci pour votre message. Je vous répondrai dans les plus brefs délais.
                 </p>
               </div>
             ) : (
-              <>
-                <h3 className="text-2xl font-bold mb-6">Démarrons votre projet</h3>
-
-                <form className="space-y-6" onSubmit={handleSubmit}>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
-                        Nom complet *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        placeholder="Votre nom"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        placeholder="vous@exemple.com"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
-                        Téléphone
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        placeholder="+223 XX XX XX XX"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
-                        Entreprise
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        placeholder="Nom de votre entreprise"
-                      />
-                    </div>
-                  </div>
-
+              <form className="space-y-8" onSubmit={handleSubmit}>
+                <div className="grid sm:grid-cols-2 gap-8">
                   <div>
-                    <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
-                      Type de demande *
-                    </label>
-                    <select
-                      name="sujet"
-                      value={formData.sujet}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                      required
-                    >
-                      <option value="">Sélectionnez le type de demande</option>
-                      {subjects.map((subject) => (
-                        <option key={subject.value} value={subject.value}>
-                          {subject.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
-                      Décrivez votre projet *
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={5}
-                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                      placeholder="Parlez-moi de votre projet, vos objectifs, votre timeline..."
-                      required
+                    <label className="font-mono text-[11px] uppercase tracking-widest2 text-muted">Nom complet *</label>
+                    <input
+                      type="text" name="name" value={formData.name} onChange={handleChange}
+                      className={inputClasses} placeholder="Votre nom" required
                     />
                   </div>
+                  <div>
+                    <label className="font-mono text-[11px] uppercase tracking-widest2 text-muted">Email *</label>
+                    <input
+                      type="email" name="email" value={formData.email} onChange={handleChange}
+                      className={inputClasses} placeholder="vous@exemple.com" required
+                    />
+                  </div>
+                </div>
 
-                  {/* Message d'erreur */}
-                  {error && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex items-start gap-3 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl text-sm text-red-700 dark:text-red-300"
-                    >
-                      <AlertCircle size={18} className="flex-shrink-0 mt-0.5" />
-                      <p>{error}</p>
-                    </motion.div>
-                  )}
+                <div className="grid sm:grid-cols-2 gap-8">
+                  <div>
+                    <label className="font-mono text-[11px] uppercase tracking-widest2 text-muted">Téléphone</label>
+                    <input
+                      type="tel" name="phone" value={formData.phone} onChange={handleChange}
+                      className={inputClasses} placeholder="+223 XX XX XX XX"
+                    />
+                  </div>
+                  <div>
+                    <label className="font-mono text-[11px] uppercase tracking-widest2 text-muted">Entreprise</label>
+                    <input
+                      type="text" name="company" value={formData.company} onChange={handleChange}
+                      className={inputClasses} placeholder="Nom de votre entreprise"
+                    />
+                  </div>
+                </div>
 
-                  <motion.button
-                    type="submit"
-                    disabled={loading}
-                    whileHover={{ scale: loading ? 1 : 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-4 px-6 rounded-lg font-semibold flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-70"
+                <div>
+                  <label className="font-mono text-[11px] uppercase tracking-widest2 text-muted">Type de demande *</label>
+                  <select
+                    name="sujet" value={formData.sujet} onChange={handleChange}
+                    className={`${inputClasses} appearance-none cursor-pointer`} required
                   >
-                    {loading ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        Envoi en cours...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={20} />
-                        Envoyer le message
-                      </>
-                    )}
-                  </motion.button>
-                </form>
+                    <option value="" className="bg-bg">Sélectionnez le type de demande</option>
+                    {subjects.map((subject) => (
+                      <option key={subject.value} value={subject.value} className="bg-bg">
+                        {subject.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
-                  En envoyant ce formulaire, vous acceptez d'être contacté concernant votre demande.
-                </p>
-              </>
+                <div>
+                  <label className="font-mono text-[11px] uppercase tracking-widest2 text-muted">Décrivez votre projet *</label>
+                  <textarea
+                    name="message" value={formData.message} onChange={handleChange} rows={4}
+                    className={`${inputClasses} resize-none`}
+                    placeholder="Parlez-moi de votre projet, vos objectifs, votre timeline..." required
+                  />
+                </div>
+
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-start gap-3 p-4 border border-line text-sm text-ink"
+                  >
+                    <AlertCircle size={18} className="flex-shrink-0 mt-0.5 text-gold" />
+                    <p>{error}</p>
+                  </motion.div>
+                )}
+
+                <motion.button
+                  type="submit"
+                  disabled={loading}
+                  whileHover={{ y: loading ? 0 : -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center justify-center gap-3 bg-gold text-bg py-4 px-8 rounded-full font-semibold hover:shadow-lg hover:shadow-gold/20 transition-shadow duration-300 disabled:opacity-60"
+                >
+                  {loading ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-bg border-t-transparent rounded-full animate-spin" />
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={17} />
+                      Envoyer le message
+                    </>
+                  )}
+                </motion.button>
+              </form>
             )}
           </motion.div>
         </div>
 
-        {/* Section FAQ rapide */}
+        {/* FAQ */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-20 text-center"
+          className="mt-28"
         >
-          <h3 className="text-2xl font-bold mb-8">Questions fréquentes</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                q: "Quel est votre délai de réponse ?",
-                a: "Je réponds à tous les messages sous 24h maximum, souvent plus rapidement."
-              },
-              {
-                q: "Proposez-vous des devis gratuits ?",
-                a: "Oui, l'étude de votre projet et le devis détaillé sont entièrement gratuits."
-              },
-              {
-                q: "Travaillez-vous à distance ?",
-                a: "Absolument ! Je collabore avec des clients partout dans le monde."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                <h4 className="font-semibold mb-2 text-blue-600 dark:text-blue-400">{faq.q}</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">{faq.a}</p>
+          <span className="eyebrow">Questions fréquentes</span>
+          <div className="mt-8 border-t border-line">
+            {faqs.map((faq, index) => (
+              <div key={index} className="grid sm:grid-cols-12 gap-4 py-7 border-b border-line">
+                <span className="sm:col-span-1 font-mono text-sm text-gold">0{index + 1}</span>
+                <h4 className="sm:col-span-4 font-serif text-lg text-ink">{faq.q}</h4>
+                <p className="sm:col-span-7 text-sm text-muted leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
