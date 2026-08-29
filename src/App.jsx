@@ -12,19 +12,17 @@ const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   return (
-    <div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
+    <div className="bg-bg text-ink min-h-screen transition-colors duration-300">
       <Navbar />
-      <div className="pt-20">
-        <Hero />
-        <Suspense fallback={null}>
-          <About />
-          <Services />
-          <Education />
-          <Portfolio />
-          <Contact />
-          <Footer />
-        </Suspense>
-      </div>
+      <Hero />
+      <Suspense fallback={null}>
+        <About />
+        <Services />
+        <Education />
+        <Portfolio />
+        <Contact />
+        <Footer />
+      </Suspense>
     </div>
   );
 }
