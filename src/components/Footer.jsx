@@ -1,4 +1,5 @@
 import { Github, Linkedin, MessageCircle, ArrowUp } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const socialLinks = [
   { name: 'GitHub', icon: Github, url: 'https://github.com/Abdoulaye-T' },
@@ -6,16 +7,11 @@ const socialLinks = [
   { name: 'WhatsApp', icon: MessageCircle, url: 'https://wa.me/22392353120' },
 ];
 
-const quickLinks = [
-  { name: 'Accueil', href: '#home' },
-  { name: 'À propos', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Parcours', href: '#education' },
-  { name: 'Projets', href: '#portfolio' },
-  { name: 'Contact', href: '#contact' },
-];
-
 export default function Footer() {
+  const { t } = useLanguage();
+  const { tagline, navTitle, followTitle, rights, availability } = t.footer;
+  const navLinks = t.nav.links;
+
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   const currentYear = new Date().getFullYear();
 
@@ -27,20 +23,16 @@ export default function Footer() {
             <p className="font-serif text-3xl mb-4">
               Abdoulaye<span className="text-gold">.</span>
             </p>
-            <p className="text-muted text-sm max-w-sm leading-relaxed">
-              Développeur Full Stack passionné par la création d'applications web et mobile
-              fiables. Toujours à la recherche de nouveaux défis techniques et de
-              collaborations enrichissantes.
-            </p>
+            <p className="text-muted text-sm max-w-sm leading-relaxed">{tagline}</p>
           </div>
 
           <div className="md:col-span-3">
-            <p className="font-mono text-[11px] uppercase tracking-widest2 text-muted mb-4">Navigation</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest2 text-muted mb-4">{navTitle}</p>
             <ul className="space-y-2.5">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a href={link.href} className="text-sm text-ink/80 hover:text-gold transition-colors duration-200">
-                    {link.name}
+              {navLinks.map((link) => (
+                <li key={link.id}>
+                  <a href={`#${link.to}`} className="text-sm text-ink/80 hover:text-gold transition-colors duration-200">
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -48,7 +40,7 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <p className="font-mono text-[11px] uppercase tracking-widest2 text-muted mb-4">Me suivre</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest2 text-muted mb-4">{followTitle}</p>
             <div className="flex gap-3">
               {socialLinks.map((social, index) => (
                 <a
@@ -67,14 +59,12 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-line">
-          <p className="text-xs text-muted">
-            © {currentYear} Abdoulaye Traoré. Tous droits réservés.
-          </p>
+          <p className="text-xs text-muted">{rights(currentYear)}</p>
 
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 text-xs text-muted">
               <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
-              Disponible pour nouveaux projets
+              {availability}
             </div>
 
             <button

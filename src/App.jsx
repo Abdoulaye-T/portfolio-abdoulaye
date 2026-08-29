@@ -16,10 +16,10 @@ function App() {
       <Navbar />
       <Hero />
       <Suspense fallback={null}>
+        <Portfolio />
         <About />
         <Services />
         <Education />
-        <Portfolio />
         <Contact />
         <Footer />
       </Suspense>
