@@ -3,7 +3,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 
 const socialLinks = [
   { name: 'GitHub', icon: Github, url: 'https://github.com/Abdoulaye-T' },
-  { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/abdoulaye-traore-73928924a/' },
+  { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/developpeurfullstack' },
   { name: 'WhatsApp', icon: MessageCircle, url: 'https://wa.me/22392353120' },
 ];
 

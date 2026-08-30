@@ -335,17 +335,30 @@ export default {
     ],
     experienceItems: [
       {
-        title: "Stagiaire Développeur Web & Mobile",
+        title: "Développeur Web & Mobile",
         school: "Miths — Agence digitale Franco-Malienne",
-        date: "2025 – présent",
+        date: "Mai 2025 – présent",
         description:
-          "Développement de E-Uamsat, plateforme SaaS de gestion académique : architecture scalable, API RESTful sécurisées et interfaces utilisateur modernes.",
-        tags: ["Laravel", "MySQL", "API REST", "Bootstrap", "Git"],
+          "Conception de sites WordPress pour l'agence et ses clients (vitrine, support, e-commerce), maintenance et amélioration d'une application mobile en React Native, et contribution au développement d'un extranet pour un grossiste pharmaceutique. Intégration de modules Odoo personnalisés pour l'intranet de l'entreprise, en équipe avec Git et pratiques Agile/Scrum.",
+        tags: ["WordPress", "React Native", "Odoo", "PHP", "Git", "Agile/Scrum"],
         achievements: [
-          "500+ utilisateurs actifs quotidiens",
-          "Architecture scalable implémentée",
-          "Réduction de 80% du temps de gestion",
-          "Interface multilingue (FR/EN)",
+          "Sites WordPress vitrine, support et e-commerce livrés pour l'agence et ses clients",
+          "Maintenance et évolutions d'une app mobile React Native en production",
+          "Extranet développé pour un grossiste pharmaceutique (accès client, gestion de commandes)",
+          "Modules Odoo personnalisés intégrés à l'intranet de l'entreprise",
+        ],
+      },
+      {
+        title: "Encadrant pédagogique — Challenge Database IAM",
+        school: "Super DataInsights, à l'IAM (Institut Africain de Management)",
+        date: "Mars – Juillet 2026",
+        description:
+          "Encadrement et suivi pédagogique de groupes d'étudiants en 2ème année de Licence Informatique de Gestion, dans le cadre du Challenge Database de l'IAM Bamako. Pilotage de projets d'applications web dynamiques de bout en bout, de la validation de la thématique jusqu'à la soutenance finale devant jury.",
+        tags: ["Encadrement", "Pédagogie", "Applications web", "Gestion de projet"],
+        achievements: [
+          "Plusieurs groupes d'étudiants encadrés de bout en bout",
+          "Projets menés de la thématique jusqu'à la soutenance devant jury",
+          "Transmission de bonnes pratiques de développement web",
         ],
       },
       {

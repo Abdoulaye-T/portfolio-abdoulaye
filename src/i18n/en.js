@@ -335,17 +335,30 @@ export default {
     ],
     experienceItems: [
       {
-        title: "Web & Mobile Developer Intern",
+        title: "Web & Mobile Developer",
         school: "Miths — French-Malian Digital Agency",
-        date: "2025 – present",
+        date: "May 2025 – present",
         description:
-          "Building E-Uamsat, a SaaS academic management platform: scalable architecture, secure RESTful APIs and modern user interfaces.",
-        tags: ["Laravel", "MySQL", "REST API", "Bootstrap", "Git"],
+          "Building WordPress sites for the agency and its clients (showcase, support, e-commerce), maintaining and improving a React Native mobile app, and contributing to an extranet for a pharmaceutical wholesaler. Integrating custom Odoo modules for the company's intranet, working with Git and Agile/Scrum practices.",
+        tags: ["WordPress", "React Native", "Odoo", "PHP", "Git", "Agile/Scrum"],
         achievements: [
-          "500+ daily active users",
-          "Scalable architecture implemented",
-          "80% reduction in admin overhead",
-          "Bilingual interface (FR/EN)",
+          "Showcase, support and e-commerce WordPress sites delivered for the agency and its clients",
+          "Maintained and improved a production React Native app",
+          "Built an extranet for a pharmaceutical wholesaler (client access, order management)",
+          "Integrated custom Odoo modules into the company's intranet",
+        ],
+      },
+      {
+        title: "Teaching Mentor — IAM Database Challenge",
+        school: "Super DataInsights, at IAM (African Institute of Management)",
+        date: "Mar. – Jul. 2026",
+        description:
+          "Mentored and supervised groups of 2nd-year Business IT students as part of IAM Bamako's Database Challenge. Guided dynamic web application projects end-to-end, from topic validation through to the final jury defense.",
+        tags: ["Mentoring", "Teaching", "Web Applications", "Project Management"],
+        achievements: [
+          "Multiple student groups mentored end-to-end",
+          "Projects guided from topic validation through to jury defense",
+          "Shared web development best practices",
         ],
       },
       {
