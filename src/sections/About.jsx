@@ -114,7 +114,7 @@ export default function About() {
                 <Github size={18} />
               </a>
               <a
-                href="https://www.linkedin.com/in/developpeurfullstack"
+                href="https://www.linkedin.com/in/developpeur-fullstack"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-11 h-11 flex items-center justify-center border border-line rounded-full text-ink hover:border-gold hover:text-gold transition-colors duration-200"
